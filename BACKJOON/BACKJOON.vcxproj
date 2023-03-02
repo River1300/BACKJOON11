@@ -136,6 +136,7 @@
     <ClCompile Include="Backjoon07.cpp" />
     <ClCompile Include="Backjoon08.cpp" />
     <ClCompile Include="Backjoon09.cpp" />
+    <ClCompile Include="Backjoon10.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
