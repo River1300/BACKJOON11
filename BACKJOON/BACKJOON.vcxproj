@@ -137,6 +137,10 @@
     <ClCompile Include="Backjoon08.cpp" />
     <ClCompile Include="Backjoon09.cpp" />
     <ClCompile Include="Backjoon10.cpp" />
+    <ClCompile Include="Backjoon11.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="one_three.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
