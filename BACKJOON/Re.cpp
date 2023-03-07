@@ -139,3 +139,20 @@
 //		std::cout << std::lower_bound(point.begin(), point.end(), result[i]) - point.begin() << ' ';
 //	}	std::cout << '\n';
 //}
+
+//#include <iostream>
+//
+//int func(int input[5])
+//{
+//	int sum{};
+//
+//	for (int i = 0; i < 5; i++) sum += input[i];
+//
+//	return sum;
+//}
+//
+//int main()
+//{
+//	int arr[5]{ 1,2,3,4,5 };
+//	std::cout << func(arr);
+//}

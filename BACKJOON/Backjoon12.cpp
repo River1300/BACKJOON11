@@ -499,3 +499,207 @@
 < 출력 >
 	듣보잡의 수와 그 명단을 사전순으로 출력한다.
 */
+
+#
+//#include <iostream>
+//#include <vector>
+//#include <unordered_map>
+//#include <algorithm>
+//
+//int main()
+//{
+//	std::unordered_map<std::string, int> name;
+//	std::string temp;
+//
+//	int N, M;
+//	std::cin >> N >> M;
+//
+//	for (int i = 0; i < N; i++)
+//	{
+//		std::cin >> temp;
+//		name[temp]++;
+//	}
+//	int count{};
+//	std::vector<std::string> result;
+//
+//	for (int i = 0; i < M; i++)
+//	{
+//		std::cin >> temp;
+//		name[temp]++;
+//
+//		if (name[temp] == 2)
+//		{
+//			result.push_back(temp);
+//			count++;
+//		}
+//	}
+//	std::sort(result.begin(), result.end());
+//
+//	std::cout << count << '\n';
+//	for (auto e : result) std::cout << e << '\n';
+//}
+
+//#include <iostream>
+//#include <map>
+//
+//int main()
+//{
+//	std::map<std::string, int> MP;
+//	std::string S;
+//
+//	int N, M, cnt;
+//	std::cin >> N >> M;
+//
+//	for (int i = 0; i < N + M; i++) {
+//		std::cin >> S;
+//		MP[S]++;
+//		if (MP[S] > 1) cnt++;
+//	}
+//	std::cout << cnt;
+//	for (auto i : MP) {
+//		if (i.second == 2) {
+//			std::cout << '\n' << i.first;
+//		}
+//	}
+//}
+
+/* --- < 1269 > --- */
+
+/*
+< 문제 >
+	자연수를 원소로 갖는 공집합이 아닌 두 집합 A와 B가 있다.
+	이때, 두 집합의 대칭 차집합의 원소의 개수를 출력하는 프로그램을 작성하시오.
+	두 집합 A와 B가 있을 때, (A-B)와 (B-A)의 합집합을 A와 B의 대칭 차집합이라고 한다.
+
+	예를 들어, A = { 1, 2, 4 } 이고, B = { 2, 3, 4, 5, 6 } 라고 할 때,
+	A-B = { 1 } 이고, B-A = { 3, 5, 6 } 이므로,
+	대칭 차집합의 원소의 개수는 1 + 3 = 4개이다.
+
+< 입력 >
+	첫째 줄에 집합 A의 원소의 개수와 집합 B의 원소의 개수가 빈 칸을 사이에 두고 주어진다.
+	둘째 줄에는 집합 A의 모든 원소가,
+	셋째 줄에는 집합 B의 모든 원소가 빈 칸을 사이에 두고 각각 주어진다.
+	각 집합의 원소의 개수는 200,000을 넘지 않으며, 모든 원소의 값은 100,000,000을 넘지 않는다.
+
+< 출력 >
+	첫째 줄에 대칭 차집합의 원소의 개수를 출력한다.
+*/
+
+//#include <iostream>
+//#include <unordered_map>
+//
+//int main()
+//{
+//	int Asize, Bsize;
+//	std::cin >> Asize >> Bsize;
+//
+//	std::unordered_map<int, int> AB;
+//
+//	int num;
+//
+//	for (int i = 0; i < Asize; i++)
+//	{
+//		std::cin >> num;
+//		AB[num]++;
+//	}
+//
+//	for (int i = 0; i < Bsize; i++)
+//	{
+//		std::cin >> num;
+//		AB[num]++;
+//	}
+//
+//	int count{};
+//
+//	for (auto e : AB)
+//	{
+//		if (e.second != 2) count++;
+//	}
+//
+//	std::cout << count << '\n';
+//}
+
+//#include <iostream>
+//#include <map>
+//
+//int main()
+//{
+//	int S, N, M;
+//
+//	std::map<int, int> AB;
+//
+//	for (int i = 0; i < N + M; i++)
+//	{
+//		std::cin >> S;
+//		(AB[S]) ? AB.erase(S) : AB[S] = 1;
+//	}
+//
+//	std::cout << AB.size();
+//}
+
+/* --- < 11478 > --- */
+
+/*
+< 문제 >
+	문자열 S가 주어졌을 때, S의 서로 다른 부분 문자열의 개수를 구하는 프로그램을 작성하시오.
+
+	부분 문자열은 S에서 연속된 일부분을 말하며, 길이가 1보다 크거나 같아야 한다.
+
+	예를 들어, ababc의 부분 문자열은
+	a, b, a, b, c, ab, ba, ab, bc, aba, bab, abc, abab, babc, ababc가 있고, 서로 다른것의 개수는 12개이다.
+
+< 입력 >
+	첫째 줄에 문자열 S가 주어진다. S는 알파벳 소문자로만 이루어져 있고, 길이는 1,000 이하이다.
+
+< 출력 >
+	첫째 줄에 S의 서로 다른 부분 문자열의 개수를 출력한다.
+*/
+
+//#include <iostream>
+//#include <unordered_map>
+//
+//int main()
+//{
+//	std::string S;
+//	std::cin >> S;
+//
+//	std::unordered_map<std::string, int> MP;
+//	std::string temp;
+//
+//	for (int i = 0; i < S.size(); i++)
+//	{
+//		for (int j = 1; j <= S.size(); j++)
+//		{
+//			temp = S.substr(i, j);
+//			MP[temp]++;
+//		}
+//	}
+//	std::cout << MP.size() << '\n';
+//}
+
+//#include <iostream>
+//#include <unordered_map>
+//
+//int main()
+//{
+//// 1. 먼저 문자열을 입력 받는다.
+//	std::string S;
+//	std::cin >> S;
+//// 2. 이제 받은 문자열을 분해한다.
+////		=> 분해는 0번 인덱스 ~ 끝 인덱스까지
+////		=> 1번 인덱스 ~ 끝 인덱스까지 ...
+//// 3. 최종적으로 서로 다른 문자열의 개수를 출력해야 한다.
+////		=> 그러므로 중복되는 문자열을 처내야 하는데 이를 위해 map을 이용한다.
+//	std::unordered_map<std::string, int> MP;
+//	std::string temp;
+//
+//	for (int i = 0; i < S.size(); i++)
+//	{
+//		for (int j = i; j <= S.size(); j++)
+//		{
+//			temp = S.substr(i, j);
+//			MP[temp]++;
+//		}
+//	}
+//	std::cout << MP.size() << '\n';
+//}
