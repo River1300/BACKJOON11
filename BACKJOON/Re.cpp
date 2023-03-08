@@ -156,3 +156,263 @@
 //	int arr[5]{ 1,2,3,4,5 };
 //	std::cout << func(arr);
 //}
+
+//#include <iostream>
+//#include <vector>
+//#include <algorithm>
+//
+//int main()
+//{
+//	int N, M;
+//	std::cin >> N >> M;
+//	std::vector<int> card(N, 0);
+//	int temp;
+//	for (int i = 0; i < N; i++) std::cin >> card[i];
+//	std::sort(card.begin(), card.end());
+//
+//	std::vector<int> check(M, 0);
+//	std::vector<int> answer(M, 0);
+//
+//	for (int i = 0; i < M; i++)
+//	{
+//		std::cin >> check[i];
+//		int low{};
+//		int high = N - 1;
+//
+//		while (low <= high)
+//		{
+//			int mid = (low + high) / 2;
+//			if (card[mid] == check[i]) {
+//				answer[i]++;
+//				break;
+//			}
+//			else if (card[mid] > check[i]) {
+//				high = mid - 1;
+//			}
+//			else if (card[mid] < check[i]) {
+//				low = mid + 1;
+//			}
+//		}
+//	}
+//	for (auto e : answer) std::cout << e << ' ';
+//}
+
+//#include <iostream>
+//#include <unordered_map>
+//
+//int main()
+//{
+//	int N, M, count;
+//	std::cin >> N >> M;
+//	std::string s;
+//	
+//	std::unordered_map<std::string, int> name;
+//
+//	for (int i = 0; i < N; i++)
+//	{
+//		std::cin >> s;
+//		name[s] = 1;
+//	}
+//	for (int i = 0; i < M; i++)
+//	{
+//		std::cin >> s;
+//		if (name[s]) count += 1;
+//	}
+//	std::cout << count;
+//}
+
+//#include <iostream>
+//#include <unordered_map>
+//#include <string>
+//
+//int main()
+//{
+//	int N, M;
+//	std::cin >> N >> M;
+//	std::unordered_map<std::string, std::string> poket;
+//	std::string name;
+//	for (int i = 1; i <= N; i++)
+//	{
+//		std::cin >> name;
+//		poket[name] = std::to_string(i);
+//		poket[std::to_string(i)] = name;
+//	}
+//	for (int i = 0; i < M; i++)
+//	{
+//		std::cin >> name;
+//		std::cout << poket[name] << '\n';
+//	}
+//}
+
+//#include <iostream>
+//#include <unordered_map>
+//
+//int main()
+//{
+//	int N, M, X;
+//	std::unordered_map<int, int> card;
+//
+//	for (std::cin >> N; N--;)
+//		std::cin >> X, card[X]++;
+//	for (std::cin >> M; M--;)
+//		std::cin >> X, std::cout << card[X] << ' ';
+//}
+
+//#include <iostream>
+//#include <map>
+//
+//int main()
+//{
+//	std::map<std::string, int> MP;
+//	std::string S;
+//
+//	int N, M, cnt;
+//	std::cin >> N >> M;
+//
+//	for (int i = 0; i < N + M; i++)
+//	{
+//		std::cin >> S;
+//		MP[S]++;
+//		if (MP[S] > 1)cnt++;
+//	}
+//	std::cout << cnt;
+//	for (auto i : MP) {
+//		if (i.second == 2) {
+//			std::cout << '\n' << i.first;
+//		}
+//	}
+//}
+
+//#include <iostream>
+//#include <map>
+//
+//int main()
+//{
+//	int S, N, M;
+//	std::cin >> N >> M;
+//	std::map<int, int> AB;
+//
+//	for (int i = 0; i < N + M; i++)
+//	{
+//		std::cin >> S;
+//		(AB[S]) ? AB.erase(S) : AB[S] = 1;
+//	}
+//	std::cout << AB.size();
+//}
+
+//#include <iostream>
+//#include <unordered_map>
+//
+//int main()
+//{
+//	std::string S;
+//	std::cin >> S;
+//
+//	std::unordered_map<std::string, int> MP;
+//	std::string temp;
+//
+//	for (int i = 0; i < S.size(); i++)
+//	{
+//		for (int j = 1; j <= S.size(); j++)
+//		{
+//			temp = S.substr(i, j);
+//			MP[temp]++;
+//		}
+//	}
+//	std::cout << MP.size() << '\n';
+//}
+
+//#include <iostream>
+//
+//enum MonsterType
+//{
+//	Wolf, Demon, Slime
+//};
+//
+//struct Monster
+//{
+//	MonsterType type;
+//	std::string name;
+//	int HP;
+//};
+//
+//std::string GetMonsterTypeString(MonsterType type)
+//{
+//	std::string typeString{};
+//
+//	switch (type)
+//	{
+//	case Wolf:
+//		typeString = "Wolf";
+//		break;
+//	case Demon:
+//		typeString = "Demon";
+//		break;
+//	case Slime:
+//		typeString = "Slime";
+//		break;
+//	default:
+//		typeString = "NONE";
+//		break;
+//	}
+//	return typeString;
+//}
+//
+//void PrintMonster(Monster monster)
+//{
+//	std::cout << "Type : " << GetMonsterTypeString(monster.type) << '\n';
+//	std::cout << "Name : " << monster.name << '\n';
+//	std::cout << "HP : " << monster.HP << '\n';
+//}
+//
+//int main()
+//{
+//	Monster wolf{ Wolf,"황천늑대",10 };
+//	Monster demon{ Demon,"써큐버스",100 };
+//
+//	PrintMonster(wolf);
+//}
+
+//#include <iostream>
+//#include <ctime>
+//
+//void CreateAnswer();
+//void InputNumber();
+//bool CheckNumber();
+//
+//int gResultArray[3]{};
+//int gInputArray[3]{};
+//
+//int main()
+//{
+//	CreateAnswer();
+//
+//	while (true)
+//	{
+//		InputNumber();
+//		if (CheckNumber()) break;
+//	}
+//}
+//
+//void CreateAnswer()
+//{
+//	int usedDigit[10]{ 0 };
+//	std::srand(std::time(nullptr));
+//
+//	for (int i = 0; i < 3; i++)
+//	{
+//		bool isDuplicated = true;
+//		int random_digit{};
+//
+//		while (isDuplicated)
+//		{
+//			random_digit = std::rand() % 10;
+//			if (usedDigit[random_digit] == 0) {
+//				usedDigit[random_digit] = 1;
+//				break;
+//			}
+//		}
+//		gResultArray[i] = random_digit;
+//		std::cout << random_digit;
+//	}
+//}

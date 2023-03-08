@@ -715,4 +715,144 @@ return ++index;
 return (a * b);
 함수는 순서대로 진행되다가 return 을 만나면 종료되고 ,호출한 환경으로 제어권이 넘어가게 된다.
 함수의 흐름에 따라 return이 하나 이상 있을 수 있으며, 가장 마지막에 위치하지 않을 수도 있다.
+
+char ConvertToUpperCase(char input);
+
+int main()
+	char buffer[50] = "Hello World";
+
+	for(int i = 0; i < 50; i++)
+		std::cout<<ConvertToUpperCase(buffer[i]);
+	char ConvertToUpperCase(char input)
+		if(input >= 'a' && input <= 'z')
+			return input - 'a' + 'A';
+			return input;
+
+함수의 작동 원리
+컴퓨터에서 일어나는 일을 알아두면 프로그래밍에도 도움이 되긴 하지만, 나중에 디버깅을 할 떄 매우 도움이
+되기 때문에 함수가 어떻게 컴퓨터에서 도앚ㄱ하는 지를 잠시 살펴 보겠다.
+
+void f(int x)
+	int y = 1;
+	g(x);
+void g(int x)
+	int z = 1;
+int main()
+	int x = 1;
+	f(x);
+main -> f -> g / 변수와 인자들을 위해서는 추가적인 정보가 필요하다.
+프로그램이 시작되면 main함수가 
+시작되고 로컬 변수 x를 준비한다. 그리고 함수 f(x)를 호출하면 다음과 같이 흐름
+이 분기된다.
+기존의 main정보 위에 새로운 함수 정보를 붙여둔다. 함수에 필요한 인자x와 로컬변수 y를 준비한다.
+그림에서 본 것 처럼 동일한 타입과 이름의 x는 다른 공간에 존재하는 변수라는 것을 알 수 있다.
+다시 g를 호출한다.
+기존 정보 위에 새롭게 g함수에 대한 인자와 로컬 변수를 준비한다. g함수를 모두 처리하고 나면 반환하게되고
+그럼 함수 f로 돌아간다. 간단히 가장 마지막에 추가한 g를 꺼내면 f로 돌아갈 수 있다.
+f역시 처리가 완료 되고 반환하면 다음고 ㅏ같이 된다.
+위와 같은 것을 함수 활동 기록이라고 부르는데, 특이한 구조를 가지고 있어서 새로 호출되는 것을 쌓고 반환하며 마지막에
+저장된 것을 꺼내면 된다.
+마지막에 들어온 것을 먼저 꺼낸다. 라는 자료구조를 스택이라고 하며 함수의 진행과정을 호출 스택이라 한다.
+디버깅을 할 때는 호출 스택을 자주 사용하게 될 것이므로 개념을 알아두자.
+
+스택과 큐
+그럴듯한 프로그램
+함수는 프로그래머에게 매우 중요한 수단이다. 코드를 보기 좋고 관리하게 편하게 만들어 준다.
+주어진 start, end까지의 아스키 코드와 해당 문자를 출력하는 프로그램
+우선 바로 코딩에 들어가지 말고 내용을 정리해 보자.
+
+int main()
+	// 시작 문자(start) 끝문자(end)를 입력 받는다.
+	// 타이틀 출력
+	// 아스키 테이블에서 start ~ end까지 출력
+
+char ReadInput();
+void PrintHeader();
+void PrintTable(char start, char end);
+
+int main()
+	std::cout<<"아스키 문자 시작, 끝을 입력하세요!";
+	// 시작문자 끝문자를 입력 받는다.
+	char start{ ReadInput{} }, end{ ReadInput() };
+	// 타이틀 출력
+	PrintHeader();
+	// 아스키 테이블에서 start ~ end까지 출력
+	PrintTable(start, end);
+char GetAsciiCharacter(int code)
+	// 정수를 문자로 변환
+void PrintTable(char start, char end)
+	// start ~ end 반복
+		// 정수 : 문자 형태로 출력
+		GetAsciiCharacter();
+문론 설명을 위해 무리하게 함수로 구분해서 만들긴 했지만 실제 업무에서의 흐름을 연습하기 위한 것으로 이해
+하면 된다. 이렇게 잘게 자를필요는 없다.
+
+char ReadInput()
+	char ch;
+	std::cin>>ch;
+	return ch;
+void PrintHeader()
+	std::cout<<std::endl;
+	std::cout<<"----ASCII TABLE----";
+	std::cout<<std::endl;
+char GetAsciiCharacter(int code)
+	return (char)(code);
+void PrintTable(char start, char end)
+	for(int ch = start; ch <= end; ch++)
+		std::cout<<ch<<
+			'\t'<<
+			GetAsciiCharacter(ch) <<
+			std::endl;
+지금까지의 강의를 잘 따라왔다면 분석에 큰 어려움 없다.
+
+대규모 프로젝트라면 위 코드에서 함수의 선언과 정의는 다른 파일에 존재하게될 것이고 main은 아주 간략해질 것이다.
+32 : for(int i=start; i<=end; i++)
+여기에서는 암시적인 변환을 사용했다. char(1byte)는 int(4byte)로 변환에도 아무언 문제가 없는 변환이다.
+실제 코드에서는 명시적으로 형을 변환시켜 주는 것이 좋다.
+
+매개변수의 기본값
+함수 선언의 매개변수를 지정할 때 기본 매개변수로 만들어서 인자를 생략할 수도 있다.
+int MyFunction(int x = 50); 선언에서 매개변수 = 값와 같이 기본 값을 지정할 수 있다.
+MyFunction(); 호출할 때 인자를 생략할 수 있다.
+int MyFunction(int x) 인자를 생략한 후 함수 본체의 매개 변수는 자동적으로 기본 값이 배정된다.
+함수 선언에서 매개변수의 타입만 지정할 수도 있으므로 위 내용은 다음과 같이도 표현 가능하다.
+
+당연히 한 개 이상의 매개변수도 사용 가능하다.
+void Point(int x = 1, int y = 2, int z = 3);
+Point(4,5,6); Point(4,5,6)호출
+Point(4,5); Point(4,5,3)호출
+Point(4); Point(4,2,3)호출
+Point(); Point(1,2,3)호출
+주의할 점은 기본 매개변수는 매개변수 목록 마지막에 위치해야만 한다.
+int MyFunction(int x= 10, int y);
+이렇게 매개 변수의 기본값을 지정했다고 가정하자, 그러면 myFunction(1)을 호출했을 때 컴파일러는 이것이
+x를 생략하고 y에 대한 인자를 준 것인지, 아니면 프로그래머 실수로 한 개만 입력한 것인지 구분할 방법이 없다.
+그래서 이런 모호성을 확실히 제거하기 위해 기본 매개변수는 고정 매개변수 뒤에 와야 한다라는 조건이 만들어
+진것이다.
+
+가변인자
+임의의 변수, 함수의 매개변수를 여러개 넘겨 줄 수 있다는 의미가 가변 인자이고, 그 여러개의 변수를 줄여서
+표현하는 것이 sllipses라고 보면 된다. 생략을 의미하는 줄임표(...)를 Ellipses라고 부른다.
+
+void function(int a)
+	std::cout<<a<<'\n';
+void function(int a, int b)
+	std::cout<<a<<' '<<b<<std::endl;
+int main()
+	function(1);
+	function(2,3);
+동일한 이름의 서로 다른 파라미터를 가진 함수입니다. 이러한 것을 함수 오버로딩으로 위와 같이 표현할 수 있지만
+조금 더 깔끔하게 처리하기 위해서는 가변 파라미터를 받게하면 더 편합니다.
+void functino(int count, ...)
+	va_list params;
+	va_start(params, count);
+	for(int i=0;i<count;i++)
+		std::cout<<va_arg(params, int);
+	std::cout<<std::endl;
+int main()
+	funciton(1,1);
+	function(2,2,3);
+이렇게 함수를 말줄임표를 이용해 가변 매개변수로 만들 수 있다. 단, 가변 매개변수를 넘겨주기 위해서는
+최소 1개의 고정 매개변수가 필요하다. 여기서는 매개변수의 개수를 지정하는 count로 사용했다. 가변 매개변수를 사용
+하려면 stdarg.h가 필요하고 va_list, va_start, va_arg등과 같은 함수를 사용하면 된다.
 */
