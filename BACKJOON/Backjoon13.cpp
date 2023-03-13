@@ -388,3 +388,181 @@
 	sqrt를 사용하면 헤더 파일이 추가되는 것 뿐만 아니라 double로 계산되기 때문에 항상 오차를
 	야기할 수 있다.
 */
+
+//#include <iostream>
+//#include <math.h>
+//
+//int main()
+//{
+//	int T;
+//	std::cin >> T;
+//
+//	std::pair<int, int> point[2];
+//	double r1, r2;
+//
+//	for (int i = 0; i < T; i++)
+//	{
+//		std::cin >> point[0].first >> point[0].second >> r1 >> point[1].first >> point[1].second >> r2;
+//
+//		double D{ (sqrt(pow(point[0].first - point[1].first, 2)
+//		+ pow(point[0].second - point[1].second, 2))) };
+//		double RD{ std::abs(r1 - r2) };
+//
+//		if (D == 0 && r1 == r2) { std::cout << -1 << '\n'; }
+//		else if (D < r1 + r2 && (RD < D)) { std::cout << 2 << '\n'; }
+//		else if (D == r1 + r2 || D == RD) { std::cout << 1 << '\n'; }
+//		else { std::cout << 0 << '\n'; }
+//	}
+//}
+
+/* --- < 1004 > --- */
+
+/*
+< 문제 >
+	어린 왕자는 소혹성 B-664에서 자신이 사랑하는 한 송이 장미를 위해 살아간다.
+	어느 날 장미가 위험에 빠지게 된 것을 알게 된 어린 왕자는,
+	장미를 구하기 위해 은하수를 따라 긴 여행을 하기 시작했다.
+	하지만 어린 왕자의 우주선은 그렇게 좋지 않아서 행성계 간의 이동을 최대한 피해서 여행해야 한다.
+	아래의 그림은 어린 왕자가 펼쳐본 은하수 지도의 일부이다.
+
+	빨간 실선은 어린 왕자가 출발점에서 도착점까지 도달하는데 있어서
+	필요한 행성계 진입/이탈 횟수를 최소화하는 경로이며,
+	원은 행성계의 경계를 의미한다.
+	이러한 경로는 여러 개 존재할 수 있지만 적어도 3번의 행성계
+	진입/이탈이 필요하다는 것을 알 수 있다.
+
+	위와 같은 은하수 지도, 출발점, 도착점이 주어졌을 때
+	어린 왕자에게 필요한 최소의 행성계 진입/이탈 횟수를 구하는 프로그램을 작성해 보자.
+	행성계의 경계가 맞닿거나 서로 교차하는 경우는 없다.
+	또한, 출발점이나 도착점이 행성계 경계에 걸쳐진 경우 역시 입력으로 주어지지 않는다.
+
+< 입력 >
+	입력의 첫 줄에는 테스트 케이스의 개수 T가 주어진다.
+	그 다음 줄부터 각각의 테스트케이스에 대해 첫째 줄에
+	출발점 (x1, y1)과 도착점 (x2, y2)이 주어진다.
+	두 번째 줄에는 행성계의 개수 n이 주어지며,
+	세 번째 줄부터 n줄에 걸쳐 행성계의 중점과 반지름 (cx, cy, r)이 주어진다.
+
+< 출력 >
+	각 테스트 케이스에 대해 어린 왕자가 거쳐야 할 최소의 행성계 진입/이탈 횟수를 출력한다.
+
+< 제한 >
+	-1000 ≤ x1, y1, x2, y2, cx, cy ≤ 1000
+	1 ≤ r ≤ 1000
+	1 ≤ n ≤ 50
+	좌표와 반지름은 모두 정수
+
+< 풀이 >
+	두 점이
+	i) 둘 다 원 안에 있다면 0번
+	ii) 둘 다 원 밖에 있다면 0번
+	iii) 둘 중 하나만 원 안에 있다면 1번
+	씩 더해주면 된다.
+*/
+
+//#include <iostream>
+//
+//int main()
+//{
+//	int T;
+//	std::cin >> T;
+//
+//	for (int i = 0; i < T; i++)
+//	{
+//		std::pair<int, int> start;
+//		std::pair<int, int> end;
+//		std::cin >> start.first >> start.second >> end.first >> end.second;
+//
+//		int N;
+//		std::cin >> N;
+//
+//		int count{};
+//		for (int j = 0; j < N; j++)
+//		{
+//			int x, y, r;
+//			std::cin >> x >> y >> r;
+//
+//			double d1 =
+//				(x - start.first) * (x - start.first)
+//				+ (y - start.second) * (y - start.second);
+//			double d2 =
+//				(x - end.first) * (x - end.first)
+//				+ (y - end.second) * (y - end.second);
+//
+//			bool s{ d1 > r * r ? false : true };
+//			bool e{ d2 > r * r ? false : true };
+//
+//			if (s != e) { count++; }
+//		}
+//		std::cout << count << '\n';
+//	}
+//}
+
+/* --- < 1358 > --- */
+
+/*
+< 문제 >
+	지난주에, 민식주식회사는 IIHF(International Ice Hockey Federation)로부터 긴급한 전화를 받았다.
+
+	IIHF는 같은 팀이 링크안에 너무 많으면 알람이 울리는 시스템을 설치해달라고 요청했다.
+	시스템은 다음과 같이 3개의 부분으로 이루어진다.
+
+	디지털카메라가 링크의 사진을 매 1초마다 찍는다.
+	디지털카메라가 찍은 사진에서 각 선수의 위치를 뽑아낸다.
+	하키 링크 안에 같은 팀 선수가 총 몇 명인지 계산한다.
+	하키 링크는 (X, Y)가 가장 왼쪽 아래 모서리인 W * H 크기의 직사각형과,
+	반지름이 H/2이면서 중심이 (X, Y+R), (X+W, Y+R)에 있는 두 개의 원으로 이루어져 있다.
+	아래 그림을 참고한다.
+
+	선수들의 위치가 주어질 때,
+	링크 안 또는 경계에 있는 선수가 총 몇 명인지 구하는 프로그램을 작성하시오.
+
+< 입력 >
+	첫째 줄에 수 W H X Y P가 주어진다.
+	P는 선수의 수이다.
+	W와 H는 100보다 작거나 같은 자연수이고,
+	H는 짝수이다.
+	X와 Y는 절댓값이 100보다 작거나 같은 정수이다.
+	P는 최대 50인 자연수이다.
+	둘째 줄부터 P개의 줄에 각 선수들의 x좌표와 y좌표가 주어진다.
+	이 좌표는 절댓값이 300보다 작거나 같은 정수이다.
+
+< 출력 >
+	첫째 줄에 링크 안에 있는 선수의 수를 출력한다.
+*/
+
+//#include <iostream>
+//#include <math.h>
+//
+//int main()
+//{
+//	double W, H, X, Y, P;
+//	std::cin >> W >> H >> X >> Y >> P;
+//
+//	int count{};
+//	double R = H / 2;
+//	double xW{ X + W }, yH{ Y + H };
+//	std::pair<double, double> LR{ X,Y + R }, RR{ xW,Y + R };
+//
+//	for (int i = 0; i < P; i++)
+//	{
+//		std::pair<double, double> temp;
+//		std::cin >> temp.first >> temp.second;
+//
+//		if(temp.first >= X && xW >= temp.first
+//			&& temp.second >= Y && yH >= temp.second) {
+//			count++;
+//		}
+//		else
+//		{
+//			double C1 =
+//				sqrt(pow(LR.first - temp.first, 2) + pow(LR.second - temp.second, 2));
+//			double C2 =
+//				sqrt(pow(RR.first - temp.first, 2) + pow(RR.second - temp.second, 2));
+//
+//			if (C1 <= R) { count++; }
+//			else if (C2 <= R) { count++; }
+//		}
+//	}
+//	std::cout << count << '\n';
+//}
