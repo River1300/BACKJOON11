@@ -416,3 +416,62 @@
 //		std::cout << random_digit;
 //	}
 //}
+
+//#include <iostream>
+//
+//int main()
+//{
+//// 1. T1와 T2가 좌표 상에 있고 이 둘은 Z라는 적과의 거리 <---> R1, R2 가 각각 주어진다.
+//// 2. T1 좌표지점에서 Z 좌표지점까지의 거리가 R1이라면 Z가 있을 수 있는 좌표지점은 T1을 중심으로 R1 반지름을 갖는
+////		=> 원형 형태의 모든 테두리 지점이다. 이는 T2도 마찬가지이다.
+//// 3. T1의 원 태두리와 T2의 원 태두리가 겹치는 좌표지점이 Z가 있을 수 있는 곳이다.
+//// 4. Z가 있을 수 있는 두 원의 교점은 총 3가지 존재한다.
+////		=> T1과 T2의 좌표가 같고, R1과 R2의 거리가 같을 때, 즉 완전이 두 원이 곂쳐질 때
+////		=> T1의 원과 T2의 원 태두리의 두 지점만 겹칠 때, 두 원의 반지름(R1, R2)가 T1, T2간의 거리보다 길을때
+////		=> T1과 T2의 거리와 R1 + R2의 거리가 같아서 딱 한 지점만 곂쳐질 때
+//	std::pair<int, int> point[2];
+//	double r1, r2;
+//	std::cin >> point[0].first >> point[0].second >> r1
+//		>> point[1].first >> point[1].second >> r2;
+//// 5. T1, T2 각각 두 좌표들간의 거리를 알아야 원의 태두리가 서로 곂치는지 아닌지 알 수 있다.
+//	double D{ (sqrt(pow(point[0].first - point[1].first, 2)
+//	+ pow(point[0].second - point[1].second, 2))) };
+//// 6. 반지름의 차를 구한다.
+//	double RD{ std::abs(r1 - r2) };
+//
+//// 두 좌표간의 거리가 0이고 반지름이 서로 같다면 완전이 곂치는 원이다.
+//	if (D == 0 && r1 == r2) std::cout << -1 << '\n';
+//	// 두 좌표간의 거리가 두 원의 반지름 길이보다 작고, 반지름의 차가 두 좌표간의 거리보다 작다면 두개의 교점
+//	else if (D < r1 + r2 && (RD < D)) std::cout << 2 << '\n';
+//	// 두 좌표간의 거리가 두 원의 반지름 길이와 같거나, 두 좌표간의 거리가 반지름의 차와 같으면 한 개의 교점
+//	else if (D == r1 + r2 || D == RD) std::cout << 1 << '\n';
+//	else std::cout << 0 << '\n';
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	int count;
+//	std::cin >> count;
+//
+//	int way[6], value[6];
+//	for (int i = 0; i < 6; i++)
+//	{
+//		std::cin >> way[i] >> value[i];
+//	}
+//
+//	int temp, index;
+//	int max{ -1 };
+//	for (int i = 0; i < 6; i++)
+//	{
+//		temp = value[i] * value[(i + 1) % 6];
+//		if (max < temp)
+//		{
+//			max = temp;
+//			index = i;
+//		}
+//	}
+//	int min = value[(index + 3) % 6] * value[(index + 4) % 6];
+//	std::cout << (max - min) * count << '\n';
+//}

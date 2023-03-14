@@ -143,6 +143,7 @@
     <ClCompile Include="Re.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="four_six.h" />
     <ClInclude Include="one_three.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
