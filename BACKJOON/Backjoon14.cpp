@@ -659,3 +659,33 @@
 	2의 개수 22 - 10 - 20 = 2, 5의 개수 6 - 2 - 2 = 2
 	두 값 중 작은 값을 선택하여 출력한다.
 */
+
+//#include <iostream>
+//
+//using long_pair = std::pair<long long, long long>;
+//
+//long_pair two_five_count(long long x)
+//{
+//	long long two_cnt{};
+//	long long five_cnt{};
+//
+//	for (long long i = 2; i <= x; i *= 2) two_cnt += x / i;
+//	for (long long i = 5; i <= x; i *= 5) five_cnt += x / i;
+//
+//	return std::make_pair(two_cnt, five_cnt);
+//}
+//
+//int main()
+//{
+//	long long n, m;
+//	std::cin >> n >> m;
+//
+//	long_pair fc_n = two_five_count(n);
+//	long_pair fc_nm = two_five_count(n - m);
+//	long_pair fc_m = two_five_count(m);
+//
+//	long long a = fc_n.first - (fc_nm.first + fc_m.first);
+//	long long b = fc_n.second - (fc_nm.second + fc_m.second);
+//
+//	std::cout << ((a < b) ? a : b);
+//}
