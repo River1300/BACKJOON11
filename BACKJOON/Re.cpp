@@ -475,3 +475,28 @@
 //	int min = value[(index + 3) % 6] * value[(index + 4) % 6];
 //	std::cout << (max - min) * count << '\n';
 //}
+
+//#include <iostream>
+//
+//int main()
+//{
+//// 왼쪽에 N개의 지점, 오른쪽에 M개의 지점 : M은 N보자 작을 수 없다.
+//// 왼쪽 <-> 오른쪽 다리 연결 : 한 개의 지점에는 한 개의 다리만 연결될 수 있다.
+//// N개 만큼의 다리를 연결 : 다리가 서로 겹칠 수( 크로스 )없다.
+//	int T;
+//	std::cin >> T;
+//
+//	for (int i = 0; i < T; i++)
+//	{
+//		int N, M;
+//		std::cin >> N >> M;
+//
+//		int link{ 1 };
+//		for (int j = 0; j < N; j++)
+//		{
+//			link *= M - j;
+//			link /= 1 + j;
+//		}
+//		std::cout << link << '\n';
+//	}
+//}
