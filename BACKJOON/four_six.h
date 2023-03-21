@@ -618,3 +618,48 @@ char myString[] = {" is integer " };
 std::cout<<myString + myInteger;
 5를 더한다는 의미는 5칸을 건너 뛴다는 의미가 된다.
 */
+
+/*
+C/C++언어의 Compile원리
+right -> left
+기본적으로 C++언어는 오른쪽에서 왼쪽으로 해석된다. <-
+int a;
+int b;
+a = b = 0;
+이제, 우리는 위 코드의 의미는 알지만 순서를 살펴보도록 하자. 위 코드는 다음과 같다.
+a = (b = 0);
+즉 b에 0을 먼저 대입한 후, a에 b를 대입하는 순서이다.
+
+그럼 const를 한 번 살펴보자. 헷갈리므로 오른쪽에서 왼쪽으로 읽어보면된다.
+영어로 만들어진 언어라 영어 표기가 좋지만 한글도 괜찬다.
+const int a; a is int which is constant; a는 정수이며 상수형이다.
+int const a; a is constant int; a는 상수형 정수이다.
+결국 같은 의미이다.
+
+const int* a; a is Pointer to int which is constant; a는 포인터로 정수를 가리키며 그 정수는 상수이다.
+int* const b; b is constant Pointer to int; b는 상수 포인터로 정수를 가리킨다.
+int const* c; c is Pointer to constant int; c는 상수 정수를 가리키는 포인터이다.
+
+*a = 1; error a가 가리키는 정수는 상수이므로 값을 변경할 수 없다.
+a++; OK a는 일반 포인터이므로 이동이 가능하다.
+*b = 1; OK b는 일반 정수를 가리키므로 값을 변경할 수 있다.
+b++ error b는 상수 포인터이므로 이동이 불가능 하다.
+*c = 1; error c는 상수 정수를 가리미크모 값을 변경할 수 없다.
+c++; OK c는 일반 포인터이므로 이동이 가능하다.
+
+const int* 와 int const* 는 결국 같은 의미. const int와 int const가 같의 의미를 가지는 것과 동일
+
+이런 포인터 특성 때문에 const의 위치가 중요하다.
+
+오른쪽에서 읽기
+
+int* (*(*fp1)(int))[10]; 의미?
+C++언어가 맞나 할 정도로 복잡한 구문이다. 
+
+우선 식별자(Identitier : 변수명, 함수명)을 가장 먼저 찾는다. : fp1
+식별자의 오른쪽으로 읽어 나간다.
+	단 괄호()가 있다면 우선 순위가 있으니 식별자의 왼쪽을 읽는다.
+	그리고 오른쪽에 읽을 것이 없다면 끝 : (*fp1)(int) fp1은 포인터 (int) 정수를 반환하는 함수
+이제 왼쪽으로 읽어 나간다. : (*(*fp1)(int)) : 인데 포인터 [10] 10개의 배열에 대한 포인터 int* 정수에 대한
+fp1은 함수에 대한 포인터로 int를 매개변수로 가지고 정수에 대한 포인터 들 10개의 배열에 대한 포인터를 반환하는 함수
+*/
