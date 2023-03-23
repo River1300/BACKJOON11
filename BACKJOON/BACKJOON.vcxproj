@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClInclude Include="four_six.h" />
     <ClInclude Include="one_three.h" />
+    <ClInclude Include="seven_nine.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
