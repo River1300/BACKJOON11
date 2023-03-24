@@ -49,4 +49,46 @@
 링크 시간 오류
 	링크 과정에 발생하는 오류로 조금 어렵긴 하지만 코드를 훑어보면 찾을 수 있다.
 
+예외
+	지금까지 살펴본 오류에 대한 처리를 지원하는 것이 예외이며, 예외는 다음과 같이 구성되어 있다.
+		오류 발생
+			함수가 처리할 수 없는 오류가 발생하면 이를 프로그래머가 인지해서 일반적인 return이 아닌
+			예외를 던진다.
+		예외 탐지 및 처리
+			함수를 직간접적으로 호출한 모든 쪽에서 계산을 시도해보고 예외를 잡아내서 해당 예외에
+			대한 처리를 수행
+
+double linear_equation(int a, int b)
+	if(a == 0)
+		throw std::logic_error("divide by zero!");
+	return -((double)b / a);
+int main()
+	int a;
+	int b;
+	std::cout<<"두 정수를 입력하세요 : ";
+	std::cin>> a >> b;
+
+	try
+		std::cout<<linear_equation(a, b);
+	catch(std::logic_error)
+		std::cerr<< "Divede by zero!";
+프로그래머가 계산에서 오류를 탐지하고 logic_error 예외를 던진다.
+함수를 사용하기 전에 try{} 구문으로 계산을 시도한다.
+try블록에서 던져진 예외를 catch 한다.
+예외 대응
+예외를 사용하면 지금까지의 오류 처리해 비해 안전하게 처리할 수 있으며, 오류 감지와 처리가 명확하게
+분리될 수 있다. 예외에 대한 C++ 사용법은 매우 복잡하고 다양하다.
+
+기본 예외 처리
+
+int main()
+	try
+		// your code
+		return 0;
+	catch(std::exception e)
+		std::cerr<< "error : "<< e.what();
+		return 1;
+	catch(...)
+		std::cerr<<"unknown error!";
+		return 2;
 */
