@@ -500,3 +500,39 @@
 //		std::cout << link << '\n';
 //	}
 //}
+
+//#include <iostream>
+//
+//int EN[15];			// English : A열, B열, C열, D열... 세로 열
+//int N, result;		// Number : 1행, 2행, 3행... 가로 행
+//
+//bool check(int NUM)
+//{
+//	for (int i = 0; i < NUM; i++)
+//	{
+//		if (EN[i] == EN[NUM] || abs(EN[NUM] - EN[i]) == NUM - i) return false;
+//	}
+//	return true;
+//}
+//
+//void nqueen(int x)
+//{
+//	if (x == N) result++;
+//	else
+//	{	// i를 행이라고 가정하고 몇 번째 행에 queen이 들어가는지 입력해 준다.
+//		for (int i = 0; i < N; i++)
+//		{	// x = 0, i = 0이라고 가정하면 EN[x] = i는 0,0에 queen이 들어 같다는 의미
+//			// 즉 인덱스는 열, 내부 원소는 행을 뜻한다.
+//			EN[x] = i;
+//			// 열에 중복되는 퀸이 없다면 다음 열로 진입, 중복되는 퀸이 있다면 for문의 i를 증가
+//			if (check(x)) nqueen(x + 1);
+//		}
+//	}
+//}
+//
+//int main()
+//{
+//	std::cin >> N;
+//	nqueen(0);
+//	std::cout << result;
+//}
