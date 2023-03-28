@@ -536,3 +536,37 @@
 //	nqueen(0);
 //	std::cout << result;
 //}
+
+//#include <iostream>
+//
+//int EN[15];
+//int N, result;
+//
+//bool check(int NUM)
+//{
+//	for (int i = 0; i < NUM; i++)
+//	{
+//		if (EN[i] == EN[NUM] || abs(EN[NUM] - EN[i]) == NUM - i) return false;
+//	}
+//	return true;
+//}
+//
+//void nqueen(int x)
+//{
+//	if (x == N) result++;
+//	else
+//	{
+//		for (int i = 0; i < N; i++)
+//		{
+//			EN[x] = i;
+//			if (check(x)) nqueen(x + 1);
+//		}
+//	}
+//}
+//
+//int main()
+//{
+//	std::cin >> N;
+//	nqueen(0);
+//	std::cout << result;
+//}
