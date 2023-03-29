@@ -415,3 +415,56 @@ Git 저장소 만들기
 	비쥬얼 스튜디오 코드 -> terminal -> new terminal
 	터미널에서 깃 초기화 git init
 */
+
+/*
+Git 설치
+	Git Bash 필수 체크
+		git --version
+		git config --global core.autocrlf true
+SourceTree 설치
+	BitBucket 스킵
+VS Code 설치
+	이미 있음
+VS Code의 기본 터미널을 Git Bash로 설정
+	Select Default Profile
+		Git Bash
+	Material Icon Theme
+
+Git 최초 설정
+	이름 + 이메일
+		git config --global user.name "name"
+		git config --global user.email "email"
+
+Git 사용하기
+	Git에 저장할 폴더를 생성
+	VS로 폴더를 열기
+	파일 만들고 입력하기
+		git status : 현재 파일 상태를 git의관점에서 보여줌
+	SourceTree : 로컬 저장소에 폴더를 드래그
+	폴더로 가서 .git 삭제해보기
+		SourceTree에서 Create로 폴더 선택
+			다시 .git 폴더가 생성됨을 확인 CLI의 init과 같은 형태
+	.gitignore : git으로 보내지 않을, 관리하지 않을 파일
+		파일이름 : 해당 파일을 무시
+		/파일이름 : 최상위 폴더를 무시
+		*.확장자 : 해당 확장자로 된 모든 파일을 무시
+		!not_ignore_this.확장자 : 해당 확장자를 모두 무시하지만 이 확장자 만큼은 무시하지 말아라
+	No Commits yet : 아직 버전이 없다.
+	UnTrackedFile : 아직 git이 관리하지 않은 파일 들
+	git add 파일이름.확장자 : 해당 파일만 커밋
+	git add . : 모든 파일을 커밋
+
+	파일 하나를 삭제한다. ->
+	다른 파일의 내용을 수정해 본다. ->
+	새로운 파일을 만들어 내용을 추가해 본다. ->
+
+	git diff : 변경 사항을 보다 상세하게 보여준다.
+
+	모든 변화를 다시 저장해보자 git add .
+
+	git commit -m ""
+
+
+
+
+*/

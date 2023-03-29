@@ -498,3 +498,133 @@
 //	std::cout << ans << std::endl;
 //	return 0;
 //}
+
+/* --- < 2580 > --- */
+
+/*
+< 문제 >
+	스도쿠는 18세기 스위스 수학자가 만든 '라틴 사각형'이랑 퍼즐에서 유래한 것으로
+	현재 많은 인기를 누리고 있다.
+	이 게임은 아래 그림과 같이 가로, 세로 각각 9개씩 총 81개의 작은 칸으로 이루어진
+	정사각형 판 위에서 이뤄지는데, 게임 시작 전 일부 칸에는 1부터 9까지의 숫자 중 하나가 쓰여 있다.
+
+	나머지 빈 칸을 채우는 방식은 다음과 같다.
+
+	각각의 가로줄과 세로줄에는 1부터 9까지의 숫자가 한 번씩만 나타나야 한다.
+	굵은 선으로 구분되어 있는 3x3 정사각형 안에도 1부터 9까지의 숫자가 한 번씩만 나타나야 한다.
+
+	위의 예의 경우, 첫째 줄에는 1을 제외한 나머지 2부터 9까지의 숫자들이 이미 나타나 있으므로
+	첫째 줄 빈칸에는 1이 들어가야 한다.
+
+	또한 위쪽 가운데 위치한 3x3 정사각형의 경우에는 3을 제외한 나머지 숫자들이
+	이미 쓰여있으므로 가운데 빈 칸에는 3이 들어가야 한다.
+
+	게임 시작 전 스도쿠 판에 쓰여 있는 숫자들의 정보가 주어질 때 모든 빈 칸이 채워진
+	최종 모습을 출력하는 프로그램을 작성하시오.
+
+< 입력 >
+	아홉 줄에 걸쳐 한 줄에 9개씩 게임 시작 전 스도쿠판 각 줄에 쓰여 있는 숫자가
+	한 칸씩 띄워서 차례로 주어진다.
+	스도쿠 판의 빈 칸의 경우에는 0이 주어진다.
+	스도쿠 판을 규칙대로 채울 수 없는 경우의 입력은 주어지지 않는다.
+
+< 출력 >
+	모든 빈 칸이 채워진 스도쿠 판의 최종 모습을 아홉 줄에 걸쳐
+	한 줄에 9개씩 한 칸씩 띄워서 출력한다.
+
+	스도쿠 판을 채우는 방법이 여럿인 경우는 그 중 하나만을 출력한다.
+
+< 풀이 >
+	스도쿠는 각 행과 열, 그리고 3x3크기의 구역 9개에 각각 1~9 까지의 숫자가
+	단 한번씩만 들어가야하는 규칙을 가지고 있다.
+
+	따라서 해당 문제를 풀이하기 위해서는 스도쿠가 유효한지 체크하는 check함수가 필요하고,
+	check함수는 같은 행 또는 열에 혹시 같은 숫자가 있는지,
+	3x3크기의 구역에 같은 숫자가 있는지를 체크해주는 함수가 될 것이다.
+
+	그 후, 백트래킹을 통해서 0이 입력된 빈칸 부분에 1부터 9까지의 숫자를 차례로 넣어보고,
+	모든 칸을 채웠을 때 결과를 호출하면 되는 문제이다.
+*/
+
+#include <iostream>
+#include <utility>
+#include <vector>
+
+int board[9][9];							// 스도쿠 보드 선언
+std::vector<std::pair<int, int>> points;	// 빈칸의 위치 저장
+int cnt;
+bool found;									// 목표 달성 여부
+
+bool check(std::pair<int, int> p)			// p에는 빈칸의 x, y좌표가 들어있고 해당 좌표에는 1 ~ 9의 숫자가 있다.
+{
+	int square_x = p.first / 3;				// 3 * 3영역을 만들기 위해 구역을 나눈다.
+	int square_y = p.second / 3;			//		=> 스도쿠는 0, 0 ~ 8, 8인덱스까지 있다.
+	// 수직, 수평으로 된 배열에 같은 값이 있는지 확인한다.
+	for (int i = 0; i < 9; i++)
+	{	// 같은 행(p.first)에 같은 값이 있으면 false로 반환
+		if (board[p.first][i] == board[p.first][p.second] && i != p.second) return false;
+		// 같은 열(p.second)에 같은 값이 있으면 false로 반환
+		if (board[i][p.second] == board[p.first][p.second] && i != p.first) return false;
+	}
+	// 3 * 3구역안에서 같은 값이 있는지 확인한다.
+	for (int i = 3 * square_x; i < 3 * square_x + 3; i++)
+	{	// 3 * square_ : 3 * 3배열의 시작 인덱스
+		for (int j = 3 * square_y; j < 3 * square_y + 3; j++)
+		{	// 3 * square_ + 3 : 3 * 3배열의 끝 인덱스
+			if (board[i][j] == board[p.first][p.second])
+			{	// 전달받은 p 좌표의 값과 3 * 3배열의 값들 중 같은 값이 있으면 false로 반환
+				if (i != p.first && j != p.second) return false;
+			}
+		}
+	}
+	// 같은 값이 없다면 true로 반환
+	return true;
+}
+
+void sudoku(int N)
+{
+	if (N == cnt)
+	{
+		for (int i = 0; i < 9; i++)
+		{
+			for (int j = 0; j < 9; j++)
+			{
+				std::cout << board[i][j] << ' ';
+			}
+			std::cout << '\n';
+		}
+		found = true;
+		return;
+	}
+
+	for (int i = 1; i <= 9; i++)
+	{
+		board[points[N].first][points[N].second] = i;
+		if (check(points[N])) sudoku(N + 1);
+		if (found) return;
+	}
+
+	board[points[N].first][points[N].second] = 0;
+	return;
+}
+
+int main()
+{
+	std::pair<int, int> point;
+	for (int i = 0; i < 9; i++)
+	{
+		for (int j = 0; j < 9; j++)
+		{	// 사용자로부터 스도쿠를 입력 받는다.
+			std::cin >> board[i][j];
+			if (board[i][j] == 0)
+			{	// 사용자가 0을 입력하였을 경우
+				cnt++;					//	=> 빈칸의 개수를 한 개 증가 시킨다.
+				point.first = i;		//	=> 빈칸의 행 좌표를 저장한다.
+				point.second = j;		//	=> 빈칸의 열 좌표를 저장한다.
+				points.push_back(point);//	=> 빈칸의 행,열 좌표를 벡터에 저장한다.
+			}
+		}
+	}
+	// 0부터 시작하여 cnt개수가 될 때까지 빈칸을 채운다.
+	sudoku(0);
+}
