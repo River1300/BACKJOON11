@@ -570,3 +570,91 @@
 //	nqueen(0);
 //	std::cout << result;
 //}
+
+#include <iostream>		// 목표 : 스도쿠의 빈칸을 채우자.
+#include <utility>
+#include <vector>
+
+int board[9][9];							// 0 ~ 8 까지의 9 * 9 스도쿠 보드 선언
+std::vector<std::pair<int, int>> points;	// 사용자가 입력한 빈칸의 위치 저장
+int cnt;
+bool found;									// 목표 달성 여부
+
+bool check(std::pair<int, int> p)			// p 에는 빈칸의 x, y좌표가 들어있고 해당 좌표에는 1 ~ 9의 숫자가 있다.
+{
+	int square_x = p.first / 3;				// 3 * 3 영역을 만들기 위해 구역을 나눈다.
+	int square_y = p.second / 3;			//		=> 스도쿠는 0,0 ~ 8,8 인덱스까지 있다.
+
+	// #5. 수직, 수평으로 된 배열에 같은 값이 있는지 확인한다.
+	for (int i = 0; i < 9; i++)
+	{	//		=> 같은 행(p.first)에 같은 값이 있으면 false로 반환
+		if (board[p.first][i] == board[p.first][p.second] && i != p.second) { return false; }
+		//		=> 같은 열(p.second)에 같은 값이 있으면 false로 반환
+		if (board[i][p.second] == board[p.first][p.second] && i != p.first) { return false; }
+	}
+
+	// #6. 3 * 3 구역안에서 같은 값이 있는지 확인한다.
+	for (int i = 3 * square_x; i < 3 * square_x + 3; i++)
+	{	//	=> 3 * square_ : 3 * 3 배열의 시작 인덱스
+		for (int j = 3 * square_y; j < 3 * square_y + 3; j++)
+		{	//	=> 3 * square_ + 3 : 3 * 3 배열의 끝 인덴스
+			if (board[i][j] == board[p.first][p.second]) 
+			{	//	=> 전달받은 p 좌표의 값과 3 * 3 배열의 값들 중 같은 값이 있으면 false로 반환
+				if (i != p.first && j != p.second) { return false; }
+			}
+		}
+	}
+	
+	// #7. 같은 값이 없다면 true로 반환
+	return true;
+}
+
+void sudoku(int n)
+{
+	if (n == cnt)
+	{	// 빈칸을 모두 채웠다면 완성된 스도쿠를 출력한다.
+		for (int i = 0; i < 9; i++)
+		{
+			for (int j = 0; j < 9; j++)
+			{
+				std::cout << board[i][j] << ' ';
+			}
+			std::cout << '\n';
+		}
+		found = true;
+		return;
+	}
+
+	for (int i = 1; i <= 9; i++)
+	{	// #4. 1 ~ 9까지의 수를 빈칸 좌표에 하나씩 넣어 본다.
+		board[points[n].first][points[n].second] = i;
+		//		=> 빈칸 좌표에 넣은 값이 유효한지 확인한다.
+		//		=> 값이 유효 하다면 다음 빈칸을 채우러 재귀 호출해 간다.
+		if (check(points[n])) { sudoku(n + 1); }
+		if (found) { return; }	//		=> 이미 모든 빈칸을 채웠다면 리턴
+	}
+	
+	board[points[n].first][points[n].second] = 0;
+	return;
+}
+
+int main()
+{
+	std::pair<int, int> point;
+	for (int i = 0; i < 9; i++)
+	{
+		for (int j = 0; j < 9; j++)
+		{	// #1. 사용자로부터 스도쿠를 입력 받는다.
+			std::cin >> board[i][j];
+			if (board[i][j] == 0)
+			{	// #2. 사용자가 0을 입력하였을 경우
+				cnt++;					//	=> 빈칸의 개수를 한 개 증가 시킨다.
+				point.first = i;		//	=> 빈칸의 행 좌표를 저장한다.
+				point.second = j;		//	=> 빈칸의 열 좌표를 저장한다.
+				points.push_back(point);//	=> 빈칸의 행,열 좌표를 벡터에 저장한다.
+			}
+		}
+	}
+	// #3. 0부터 시작하여 cnt개수가 될 때까지 빈칸을 채운다.
+	sudoku(0);
+}
