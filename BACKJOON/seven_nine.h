@@ -463,8 +463,92 @@ Git 사용하기
 	모든 변화를 다시 저장해보자 git add .
 
 	git commit -m ""
+*/
 
+/*
+정렬
+정렬 알고리즘은 기본 중의 기본이다.
+간단한 알고리즘을 확인하기 위해 다음 배열을 실제로 정렬해 보자
+8 7 2 3 1
 
+순차 정렬 나 자신과 나머지 모든 값을 비교하며 연산
+선택 정렬 현재 i번째 이후의 가장 작은 ㄱ밧을 찾아서 가장 앞으로 보내는 방식
+	minIndex 가장 작은 값의 배열 인덱스를 저장한다.
+거품 정렬 인접한 두개의 원소를 검사하여 큰 값을 뒤로 보내는 과정을 반복
+삽입정렬 앞에서 부터 차례로 진행하면서 자신이 위치해야 할 곳에 값을 삽입하는 방식
+*/
 
+//#include <iostream>
+//
+//void SequntialSort(int input[], int size)
+//{
+//	for (int i = 0; i < size - 1; i++)
+//	{
+//		for (int j = i + 1; j < size; j++)
+//		{
+//			if (input[i] > input[j]) Swap(input[i], input[j]);
+//		}
+//	}
+//}
+//void SelectionSort(int input[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//	{
+//		int minIndex = i;
+//		for (int j = i; j < size; j++)
+//		{
+//			if (input[minIndex] > input[j]) minIndex = j;
+//		}
+//		if (minIndex != i) Swap(input[i], input[minIndex]);
+//	}
+//}
+//void BubbleSort(int input[], int size)
+//{
+//	for (int phase = 0; phase < size - 1; phase++)
+//	{
+//		for (int k = 0; k < size - phase - 1; k++)
+//		{
+//			if (input[k] > input[k + 1]) Swap(input[k], input[k + 1]);
+//		}
+//	}
+//}
+//void InsertSort(int input[], int size)
+//{
+//	for (int i = 1; i < size; i++)
+//	{
+//		int j = i; 
+//		int target = input[i];
+//
+//		while (--j >= 0 && target < input[j])
+//		{
+//			input[j + 1] = input[j];
+//			input[j] = target;
+//		}
+//	}
+//}
+//
+//void PrintArray(int input[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//	{
+//		std::cout << input[i] << ' ';
+//	}
+//}
+//void Swap(int& value1, int& value2)
+//{
+//	int temp = value1;
+//	value1 = temp;
+//	value1 = value2;
+//	value2 = temp;
+//}
+//int main()
+//{
+//	const int size = 5;
+//	int array[size]{ 8,7,2,3,1 };
+//
+//	PrintArray(array, size);
+//}
 
+/*
+병합 정렬
 */
