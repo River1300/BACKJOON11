@@ -659,82 +659,228 @@
 //	sudoku(0);
 //}
 
-#include <iostream>
-#include <utility>
-#include <vector>
+//#include <iostream>
+//#include <utility>
+//#include <vector>
+//
+//int board[9][9];
+//std::vector<std::pair<int, int>> points;
+//int cnt;
+//bool found;
+//
+//bool check(std::pair<int, int> p)
+//{
+//	int square_x = p.first / 3;
+//	int square_y = p.second / 3;
+//
+//	for (int i = 0; i < 9; i++)
+//	{
+//		if (board[p.first][i] == board[p.first][p.second] && i != p.second) return false;
+//		if (board[i][p.second] == board[p.first][p.second] && i != p.first) return false;
+//	}
+//
+//	for (int i = 3 * square_x; i < 3 * square_x + 3; i++)
+//	{
+//		for (int j = 3 * square_y; j < 3 * square_y + 3; j++)
+//		{
+//			if (board[i][j] == board[p.first][p.second])
+//			{
+//				if (i != p.first && j != p.second) return false;
+//			}
+//		}
+//	}
+//	return true;
+//}
+//
+//void sudoku(int N)
+//{
+//	if (N == cnt)
+//	{
+//		for (int i = 0; i < 9; i++)
+//		{
+//			for (int j = 0; j < 9; j++)
+//			{
+//				std::cout << board[i][j] << ' ';
+//			}
+//			std::cout << '\n';
+//		}
+//		found = true;
+//		return;
+//	}
+//
+//	for (int i = 1; i <= 0; i++)
+//	{
+//		board[points[N].first][points[N].second] = i;
+//		if (check(points[N])) sudoku(N + 1);
+//		if (found) return;
+//	}
+//
+//	board[points[N].first][points[N].second] = 0;
+//	return;
+//}
+//
+//int main()
+//{
+//	std::pair<int, int> point;
+//	for (int i = 0; i < 9; i++)
+//	{
+//		for (int j = 0; j < 9; j++)
+//		{
+//			std::cin >> board[i][j];
+//			if (board[i][j] == 0)
+//			{
+//				cnt++;
+//				point.first = i;
+//				point.second = j;
+//				points.push_back(point);
+//			}
+//		}
+//	}
+//	sudoku(0);
+//}
 
-int board[9][9];
-std::vector<std::pair<int, int>> points;
-int cnt;
-bool found;
+//#include <iostream>
+//
+//void PrintArray(int input[], int size)
+//{
+//	for (int i = 0; i < size; i++) std::cout << input[i] << ' ';
+//}
+//void Swap(int& value1, int& value2)
+//{
+//	int temp = value1;
+//	value1 = value2;
+//	value2 = temp;
+//}
 
-bool check(std::pair<int, int> p)
-{
-	int square_x = p.first / 3;
-	int square_y = p.second / 3;
-
-	for (int i = 0; i < 9; i++)
-	{
-		if (board[p.first][i] == board[p.first][p.second] && i != p.second) return false;
-		if (board[i][p.second] == board[p.first][p.second] && i != p.first) return false;
-	}
-
-	for (int i = 3 * square_x; i < 3 * square_x + 3; i++)
-	{
-		for (int j = 3 * square_y; j < 3 * square_y + 3; j++)
-		{
-			if (board[i][j] == board[p.first][p.second])
-			{
-				if (i != p.first && j != p.second) return false;
-			}
-		}
-	}
-	return true;
-}
-
-void sudoku(int N)
-{
-	if (N == cnt)
-	{
-		for (int i = 0; i < 9; i++)
-		{
-			for (int j = 0; j < 9; j++)
-			{
-				std::cout << board[i][j] << ' ';
-			}
-			std::cout << '\n';
-		}
-		found = true;
-		return;
-	}
-
-	for (int i = 1; i <= 0; i++)
-	{
-		board[points[N].first][points[N].second] = i;
-		if (check(points[N])) sudoku(N + 1);
-		if (found) return;
-	}
-
-	board[points[N].first][points[N].second] = 0;
-	return;
-}
-
-int main()
-{
-	std::pair<int, int> point;
-	for (int i = 0; i < 9; i++)
-	{
-		for (int j = 0; j < 9; j++)
-		{
-			std::cin >> board[i][j];
-			if (board[i][j] == 0)
-			{
-				cnt++;
-				point.first = i;
-				point.second = j;
-				points.push_back(point);
-			}
-		}
-	}
-	sudoku(0);
-}
+//// 순차 정렬
+///* 인덱스 i와 j를 비교하고 정렬 순서에 맞지 않는다면 Swap한다. 
+//이 짓을 i ~ SIZE(j+i ~ SIZE) 까지 일일이 하나 하나 작업한다. */
+//void SequentialSort(int input[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//	{
+//		for (int j = i + 1; j < size; j++)
+//		{
+//			if (input[i] > input[j]) Swap(input[i], input[j]);
+//		}
+//	}
+//}
+//
+//// 선택 정렬
+///* 인덱스 i와 j를 비교하면서 작은값 혹은 큰값을 가지고 있는 인덱스를 발견할 때마다 그 인덱스를 
+//변수로 저장해 둔다. 모든 값을 비교한 뒤에는 가장 작은값 혹은 가장 큰값의 인덱스가 변수로 저장될 것이고,
+//이 값을 맨 앞의 값과 Swap한다. 이렇게 i ~ SIZE(j=i ~ SIZE) 까지 앞에서부터 차례로 정렬해 간다. */
+//void SelectionSort(int input[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//	{
+//		int minIndex = i;
+//		for (int j = i; j < size; j++)
+//		{
+//			if (input[minIndex] > input[j]) minIndex = j;
+//		}
+//		if (minIndex != i) Swap(input[i], input[minIndex]);
+//	}
+//}
+//
+//// 거품 정렬
+///* 인덱스 i와 j를 비교하면서 바로 큰값, 혹은 작은 값을 뒤로 넘겨준다.
+//이러면 뒤에서부터 정렬이 되고 j의 반복 횟수가 점차 줄어들게 된다. 
+//i ~ SIZE-1(j ~ SIZE-i-1) */
+//void BubbleSort(int input[], int size)
+//{
+//	for (int i = 0; i < size - 1; i++)
+//	{
+//		for (int j = 0; j < size - i - 1; j++)
+//		{
+//			if (input[j] > input[j + 1]) Swap(input[j], input[j + 1]);
+//		}
+//	}
+//}
+//
+//// 삽입 정렬
+///* 인덱스 i와 j를 비교하면서 i가 자신의 위치를 찾아 들어간다.
+//반복 수가 더 적은것 같기는 한데 결국 매번 값을 바꾸는 것은 마찬가지 같다. */
+//void InsertionSort(int input[], int size)
+//{
+//	for (int i = 1; i < size; i++)
+//	{
+//		int j = i;
+//		int target = input[i];
+//
+//		while (--j >= 0 && target < input[j])
+//		{
+//			input[j + 1] = input[j];
+//			input[j] = target;
+//		}
+//	}
+//}
+//
+//// 병합 정렬
+///* 큰 문제를 작은 문제로 나눈다.
+//일단 배열을 전달 받으면 반으로 가른다. 재귀 호출하여 반으로 가른 배열을 또 반으로 가른다. 
+//이렇게 1칸의 배열이 될때 까지 가른다음 정렬하면서 합친다. 나누는 함수와 합치는 함수가 필요하다.
+//나누는 함수에서 합치는 함수를 호출한다. */
+//void Merge(int input[], int start, int half, int end, int temp[])
+//{
+//	int i = start; 
+//	int j = half + 1;
+//	int tempIndex = 0;
+//
+//	while (i <= half && j <= end)
+//	{
+//		if (input[i] < input[j]) temp[tempIndex++] = input[i++];
+//		else temp[tempIndex++] = input[j++];
+//	}
+//
+//	while (i <= half) temp[tempIndex++] = input[i++];
+//	while (j <= end) temp[tempIndex++] = input[j++];
+//
+//	tempIndex = 0;
+//	for (int i = start; i <= end; i++) input[i] = temp[tempIndex++];
+//}
+//void MergeSort(int input[], int start, int end, int temp[])
+//{
+//	if (start >= end) return;
+//
+//	int half = (start + end) / 2;
+//
+//	MergeSort(input, start, half, temp);
+//	MergeSort(input, half + 1, end, temp);
+//	Merge(input, start, half, end, temp);
+//}
+//
+//// 퀵 정렬
+///* 기준점을 잡고 왼쪽 배열에는 작은값을, 오른쪽 배열에는 큰 값을 담는다.
+//왼쪽에 작은 값들이 모두 모이고 오른쪽에 큰 값들이 모두 모였다면 재귀함수로 그 값을들 다시 왼쪽 오른쪽으로
+//나누어 또 같은 방식으로 정렬한다. */
+//void QuickSort(int input[], int left, int right)
+//{
+//	int i = left;
+//	int j = right;
+//	int pivot = input[(left + right) / 2];
+//	int temp;
+//
+//	do {
+//		while (input[i] < pivot) i++;
+//		while (input[j] > pivot) j--;
+//		if (i <= j)
+//		{
+//			Swap(input[i], input[j]);
+//			i++;
+//			j--;
+//		}
+//	} while (i <= j);
+//	if (left < j) QuickSort(input, left, j);
+//	if (i < right) QuickSort(input, i, right);
+//}
+//
+//int main()
+//{
+//	const int SIZE = 5;
+//	int array[SIZE]{ 8,7,2,3,1 };
+//
+//	// SORT ALGORITHM
+//
+//	PrintArray(array, SIZE);
+//}

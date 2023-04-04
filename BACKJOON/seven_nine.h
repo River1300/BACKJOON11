@@ -550,5 +550,95 @@ Git 사용하기
 //}
 
 /*
-병합 정렬
+병합 정렬 : 분할 정복
+	입력을 먼저 분할한다. 크기가 1이된 각 결과물을 서로 정렬하면서 처리한다.
+	입력 배열 이외의 임시 배열이 하나 더 필요하다. 분할되어 있는 행렬을 합해서 저장해야 하는
+	임시 공간이 필요하다. 매번 임시 공간을 만드는 것이 비횰적이므로 입력과 같은 크기의 배열을 만들어서 계속 함수에 넘겨
+	주는 방식을 사용한다.
+퀵 정렬 : 분할 정복
+	배열의 특정 원소를 피벗값으로 지정한다.
+	피벗보다 작은 값을 왼쪽으로, 큰 값을 오른쪽으로 정렬한다.
+	피벗 기준으로 리스트를 좌/우로 분할한다.
+	1 ~ 3과정을 반복한다.
+
+	피벗 지정이 매우 중요하다. 피벗 선택에 따라 알고리즘의 성능이 매우 차이가 난다. 평균, 최소, 최대, 등
+	피벗을 가운대로 지정한 경우
+	가운대를 기준으로 왼쪽 배열의 끝을 i, 오른쪽 배열의 끝을 j로 지정한다.
+	다음 피벗을 찾는다.
+		arr[i]가 피벗보다 작으로 i++로 증가
+		arr[j]가 피벗보다 크면 j--로 감소
+		더이상 이용이 불가능하면( 왼쪽에 작은 값이 있고 오른쪽에 큰갑시 있다면 두 값을 바꿔 좌측으로 작은값
+		우측으로 큰값을 배치)
 */
+
+//#include <iostream>
+//
+//void Merge(int input[], int start, int half, int end, int temp[])
+//{
+//	int i = start;
+//	int j = half + 1;
+//	int tempIndex = 0;
+//
+//	// 안전할 때
+//	while (i <= half && j <= end)
+//	{
+//		// 정렬하면서 왼쪽 / 오른쪽 병합
+//		if (input[i] < input[j])
+//		{
+//			temp[tempIndex++] = input[i++];
+//		}
+//		else
+//		{
+//			temp[tempIndex++] = input[j++];
+//		}
+//
+//	}
+//	// 남은 왼쪽 블럭 병합
+//	// 남은 오른쪽 블록 병합
+//	while (i <= half)
+//	{
+//		temp[tempIndex++] = input[i++];
+//	}
+//
+//	tempIndex = 0;
+//
+//	for (int i = start; i <= end; i++)
+//	{
+//		input[i] = temp[tempIndex++];
+//	}
+//}
+//
+//void MergeSort(int input[], int start, int end, int temp[])
+//{
+//	if (start >= end) return;
+//
+//	int half = (start + end) / 2;
+//
+//	MergeSort(input, start, half, temp);
+//	MergeSort(input, half + 1, end, temp);
+//	// 병합
+//	Merge(input, start, half, end, temp);
+//}
+
+//void QuickSort(int input[], int left, int right)
+//{
+//	int i = left;
+//	int j = right;
+//	int pivot = input[(left + right) / 2];
+//	int temp;
+//
+//	do
+//	{
+//		while (input[i] < pivot) i++;
+//		while (input[j] > pivot) j--;
+//		if (i <= j)
+//		{
+//			Swap(input[i], input[j]);
+//			i++;
+//			j--;
+//		}
+//	} while (i <= j);
+//
+//	if (left < j)	QuickSort(input, left, j);
+//	if (i < right) QuickSort(input, i, right);
+//}
