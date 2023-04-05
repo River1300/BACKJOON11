@@ -884,3 +884,86 @@
 //
 //	PrintArray(array, SIZE);
 //}
+
+/*
+병합 정렬은 분할 정복 방식을 이용한 정렬 알고리즘 중 하나. 이 알고리즘은 배열을 반으로 나눈 후 각각 정렬하고,
+다시 합병하는 과정을 반복하여 정렬한다. 이 과정에서 부분 배열을 정렬하는 데에도 분할 정복 방식을 사용하므로,
+배열을 분할하는 데 log n만큼의 시간이 소요되고, 각 부분 배열을 합병하는 데 n만큼의 시간이 소요된다.
+*/
+
+//#include <iostream>
+//using namespace std;
+//void merge(int arr[], int left, int mid, int right, int temp[]) {
+//    int i = left; // 왼쪽 부분 배열의 시작 인덱스
+//    int j = mid + 1; // 오른쪽 부분 배열의 시작 인덱스
+//    int k = left; // 임시 배열의 시작 인덱스
+//    temp[right + 1]; // 임시 배열
+//
+//    // 두 부분 배열에서 더 작은 값을 임시 배열에 복사
+//    while (i <= mid && j <= right) {
+//        if (arr[i] <= arr[j]) {
+//            temp[k++] = arr[i++];
+//        }
+//        else {
+//            temp[k++] = arr[j++];
+//        }
+//    }
+//
+//    // 왼쪽 부분 배열이 남은 경우, 임시 배열에 복사
+//    while (i <= mid) {
+//        temp[k++] = arr[i++];
+//    }
+//
+//    // 오른쪽 부분 배열이 남은 경우, 임시 배열에 복사
+//    while (j <= right) {
+//        temp[k++] = arr[j++];
+//    }
+//
+//    // 임시 배열을 원래 배열로 복사
+//    for (int i = left; i <= right; i++) {
+//        arr[i] = temp[i];
+//    }
+//}
+//void mergeSort(int arr[], int left, int right, int temp[]) {
+//    if (left < right) {
+//        int mid = (left + right) / 2;
+//        mergeSort(arr, left, mid, temp); // 왼쪽 부분 배열 정렬
+//        mergeSort(arr, mid + 1, right, temp); // 오른쪽 부분 배열 정렬
+//        merge(arr, left, mid, right, temp); // 두 부분 배열 병합
+//    }
+//}
+
+//void Merge(int input[], int start, int mid, int end, int temp[])
+//{
+//    int i = start;
+//    int j = mid + 1;
+//    int tempIndex = 0;
+//
+//    // 3) 두 개의 집합을 비교하면서 작은 값을 배열에 저장한다. 이때 임시 배열이 필요하다.
+//    while (i <= mid && j <= end)
+//    {
+//        if (input[i] < input[j]) temp[tempIndex++] = input[i++];
+//        else temp[tempIndex++] = input[j++];
+//    }
+//
+//    // 4) 왼쪽, 오른쪽 집단 중 하나라도 끝에 도달하면 위 반복문에서 탈출하게 된다. 이때 다른 집단의 배열이 남아 있기 때문에 남은 값을 순서대로 넣어 주면 된다.
+//    if (i <= mid) temp[tempIndex++] = input[i++];
+//    if (j <= end) temp[tempIndex++] = input[j++];
+//
+//    // 5) 정렬이 다 되었다면 원본에 다시 배정한다.
+//    tempIndex = 0;
+//    for (int i = start; i < end; i++) input[i] = temp[tempIndex++];
+//}
+//// 1) 나누는 함수가 먼저 (Divide), 당연히 정렬할 배열을 받아야 하고, 재귀 호출을 할 예정이기 때문에 시작, 끝 인덱스를 받는다. 
+//void MergeSort(int input[], int start, int end, int temp[])
+//{
+//    if (start >= end) return;
+//
+//    int mid = (start + end) / 2;
+//
+//    MergeSort(input, start, mid, temp);
+//    MergeSort(input, mid + 1, end, temp);
+//
+//    // 2) 다 나누고 난 뒤에 정렬하면서 합치기 시작한다.
+//    Merge(input, start, mid, end, temp);
+//}
