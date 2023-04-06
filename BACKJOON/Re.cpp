@@ -967,3 +967,123 @@
 //    // 2) 다 나누고 난 뒤에 정렬하면서 합치기 시작한다.
 //    Merge(input, start, mid, end, temp);
 //}
+
+/* header */
+
+//struct Element
+//{	// #. 원소 안에는 값과 다음 원소를 가리킬 포인터가 있다.
+//	int value;
+//	Element* pNext;
+//};
+//
+//struct Single_Linked_List
+//{	// #. 동적 자료구조의 시작점과 끝점을 가리킨다.
+//	Element* head = nullptr;
+//	Element* tail = nullptr;
+//};
+//
+//Element* InputElement(Single_Linked_List& list, int value);
+//int CountElement(Single_Linked_List& list);
+//Element* FindElement(Single_Linked_List& list, int value);
+//void PrintElement(Single_Linked_List& list);
+//void DeleteElement(Single_Linked_List& list);
+//void DeleteElement(Single_Linked_List& list, int value);
+//
+//#include <iostream>
+//
+//Element* InputElement(Single_Linked_List& list, int value)	// 원소 추가
+//{
+//	Element* one = new Element{ value };
+//	if (list.head == nullptr && list.tail == nullptr) {
+//		list.head = one;
+//		list.tail = one;
+//	}
+//	else
+//	{
+//		list.tail->pNext = one;
+//		list.tail = one;
+//	}
+//	return one;
+//}
+//
+//int CountElement(Single_Linked_List& list)	// 원소 갯수
+//{
+//	Element* c = list.head;
+//	int count{};
+//	while (c != nullptr)
+//	{
+//		count++;
+//		c = c->pNext;
+//	}
+//	return count;
+//}
+//
+//Element* FindElement(Single_Linked_List& list, int value)	// 원소 찾기
+//{
+//	Element* f = list.head;
+//	while (f != nullptr)
+//	{
+//		if (f->value == value) return f;
+//		f = f->pNext;
+//	}
+//	return nullptr;
+//}
+//
+//void PrintElement(Single_Linked_List& list) // 원소 출력
+//{
+//	Element* e = list.head;
+//	while (e != nullptr)
+//	{
+//		std::cout << e->value << '\n';
+//		e = e->pNext;
+//	}
+//}
+//
+//void DeleteElement(Single_Linked_List& list)	// 모든 원소 삭제
+//{
+//	Element* e = list.head;
+//	while (e != nullptr)
+//	{
+//		Element* pTemp = e->pNext;
+//		delete e;
+//		e = pTemp;
+//	}
+//	list.head = list.tail = nullptr;
+//}
+//
+//void DeleteElement(Single_Linked_List& list, int value)	// 특정 원소 삭제
+//{
+//	Element* e = list.head;
+//	Element* preV{};
+//	while (e != nullptr)
+//	{
+//		if (e->value == value) break;
+//		preV = e;
+//		e = e->pNext;
+//	}
+//
+//	if (e == nullptr) return;
+//	else if (list.head == e) list.head = e->pNext;
+//	else if (list.tail == e)
+//	{
+//		list.tail = preV;
+//		preV->pNext = e->pNext;
+//	}
+//	else { preV->pNext = e->pNext; }
+//	delete e;
+//}
+//
+//int main()
+//{
+//	Single_Linked_List myList;
+//	InputElement(myList, 10);
+//	InputElement(myList, 20);
+//	InputElement(myList, 30);
+//
+//	std::cout << CountElement(myList) << '\n';
+//	PrintElement(myList);
+//	DeleteElement(myList, 30);
+//	std::cout << CountElement(myList) << '\n';
+//
+//	DeleteElement(myList);
+//}
