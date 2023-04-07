@@ -1087,3 +1087,131 @@
 //
 //	DeleteElement(myList);
 //}
+
+//#include <iostream>
+//
+//int N;
+//int operands[11];
+//int operators[4];
+//int min = 10001;
+//int max = -10001;
+//
+//void GetAnswer(int result, int index)
+//{
+//	if (index == N) {
+//		if (result > max) max = result;
+//		if (result < min) min = result;
+//		return;
+//	}
+//
+//	for (int i = 0; i < 4; i++)
+//	{
+//		if (operators[i] > 0) {
+//			operators[i]--;
+//
+//			if (i == 0) GetAnswer(result + operands[index], index + 1);
+//			else if (i == 1) GetAnswer(result - operands[index], index + 1);
+//			else if (i == 2) GetAnswer(result * operands[index], index + 1);
+//			else GetAnswer(result / operands[index], index + 1);
+//
+//			operators[i]++;
+//		}
+//	}
+//	return;
+//}
+//
+//int main()
+//{
+//	std::cin >> N;
+//	for (int i = 0; i < N; i++) std::cin >> operands[i];
+//	for (int i = 0; i < 4; i++) std::cin >> operators[i];
+//}
+
+//struct Element
+//{	// #리스트의 저장될 원소의 속성
+//	int value;
+//	Element* pNext;
+//	Element* pPrev;
+//};
+//
+//struct Double_Linked_List
+//{	// #양방향 리스트의 속성
+//	Element* head = nullptr;
+//	Element* tail = nullptr;
+//};
+//
+//#include <iostream>
+//
+//Element* InputElement(Double_Linked_List& list, int value)	// Input Element
+//{
+//	Element* one = new Element{ value };
+//	if (list.head == nullptr && list.tail == nullptr)
+//	{
+//		list.head = one;
+//		list.tail = one;
+//	}
+//	else
+//	{
+//		one->pPrev = list.tail;
+//		list.tail->pNext = one;
+//		list.tail = one;
+//	}
+//	return one;
+//}
+//
+//int CountElement(Double_Linked_List& list)	// Count List
+//{
+//	Element* c = list.head;
+//	int count{};
+//	while (c != nullptr)
+//	{
+//		count++;
+//		c = c->pNext;
+//	}
+//	return count;
+//}
+//
+//Element* FindElement(Double_Linked_List& list, int value)
+//{
+//	Element* f = list.head;
+//	while (f != nullptr)
+//	{
+//		if (f->value == value) return f;
+//		f = f->pNext;
+//	}
+//	return nullptr;
+//}
+//
+//void PrintElement(Double_Linked_List& list)
+//{
+//	Element* p = list.head;
+//	while (p != nullptr)
+//	{
+//		std::cout << p->value << '\n';
+//		p = p->pNext;
+//	}
+//}
+//
+//void DeleteElement(Double_Linked_List& list)
+//{
+//	Element* e = list.head;
+//	while (e != nullptr)
+//	{
+//		Element* pTemp = e->pNext;
+//		delete e;
+//		e = pTemp;
+//	}
+//	list.head = list.tail = nullptr;
+//}
+//
+//void DeleteElement(Double_Linked_List& list, int value)
+//{
+//	Element* e = FindElement(list, value);
+//	if (e != nullptr)
+//	{
+//		if (e->pPrev == nullptr) list.head = e->pNext;
+//		else e->pPrev->pNext = e->pNext;
+//		if (e->pNext == nullptr) list.tail = e->pPrev;
+//		else e->pNext->pPrev = e->pPrev;
+//	}
+//}
