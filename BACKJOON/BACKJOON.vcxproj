@@ -148,6 +148,7 @@
     <ClInclude Include="four_six.h" />
     <ClInclude Include="one_three.h" />
     <ClInclude Include="seven_nine.h" />
+    <ClInclude Include="Ten_Twelve.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
