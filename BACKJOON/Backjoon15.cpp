@@ -919,4 +919,78 @@
 	 D	| 3 | 4 | 5 | 0
 
 	 N이 4명이라고 가정( A, B, C, D ) : team[4] = true, true, false, false, ...
+
+	 두 개의 팀으로 나눌 때, 두 팀의 능력치 차이가 최소가 되도록 하는 문제를 푸는 코드이다. 이를 위해서는
+	 팀을 구성하는 모든 경우의 수를 고려해야 하기 때문에 백트래킹 알고리즘이 사용된다.
+
+	 코드는 다음과 같이 동작한다.
+
+	 두 팀으로 나눌 수 있는 모든 경우의 수를 확인한다.
+	 각 경우에 대해 두 팀의 능력치를 계산하여, 능력치 차이의 최소값을 갱신한다.
+	 이를 위해, 다음과 같은 함수들이 사용되었다.
+	 void TeamSet(int index, int count) : 백트래킹 알고리즘을 이용해 가능한 모든 팀 구성을 확인하낟.
+	 index는 현재 확인 중인 선수 번호, count는 현재까지 선택된 선수 수를 나타낸다.
+	 이 함수는 모든 가능한 경우의 수를 확인하면서, 각 경우에 대해 start팀과 link팀의 능력치를 
+	 계산하고, 능력치 차이의 최소값을 계산한다.
+	 int main(); 입력을 받은 후, TeamSet ㅎ마수를 호출하여 문제를 해결한다.
 */
+
+//#include <iostream>
+//#include <vector>
+//#include <cmath>
+//
+//bool team[20];
+//int score[20][20];
+//int N;
+//int myMin{ 9999999 };
+//
+//void TeamSet(int index, int count)
+//{
+//	std::vector<int> start;
+//	std::vector<int> link;
+//	int start_score{};
+//	int link_score{};
+//
+//	if (count == (N / 2))
+//	{
+//		for (int i = 0; i < N; i++)
+//		{
+//			if (team[i] == true) { start.push_back(i); }
+//			else { link.push_back(i); }
+//		}
+//		for (int i = 0; i < (N / 2); i++)
+//		{
+//			for (int j = 0; j < (N / 2); j++)
+//			{
+//				start_score += score[start[i]][start[j]];
+//				link_score += score[link[i]][link[j]];
+//			}
+//		}
+//		if (abs(start_score - link_score) < myMin)
+//		{
+//			myMin = abs(start_score - link_score);
+//		}
+//		return;
+//	}
+//	for (int i = index; i < N; i++)
+//	{
+//		if (team[i]) continue;
+//		else {
+//			team[i] = true;
+//			TeamSet(i, count + 1);
+//			team[i] = false;
+//		}
+//	}
+//}
+//
+//int main()
+//{
+//	std::cin >> N;
+//	for (int i = 0; i < N; i++)
+//	{
+//		for (int j = 0; j < N; j++) std::cin >> score[i][j];
+//	}
+//
+//	TeamSet(0, 0);
+//	std::cout << myMin << '\n';
+//}
