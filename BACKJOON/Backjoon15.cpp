@@ -994,3 +994,185 @@
 //	TeamSet(0, 0);
 //	std::cout << myMin << '\n';
 //}
+
+//#include <iostream>
+//#include <vector>
+//#include <cmath>
+//
+//bool team[20];
+//int score[20][20];
+//int N;
+//int myMin{ 999999 };
+//
+//void TeamSet(int index, int count)
+//{
+//	std::vector<int> start;
+//	std::vector<int> link;
+//	int start_score{};
+//	int link_score{};
+//
+//	if (count == (N / 2))
+//	{
+//		for (int i = 0; i < N; i++)
+//		{
+//			if (team[i] == true) start.push_back(i);
+//			else link.push_back(i);
+//		}
+//
+//		for (int i = 0; i < (N / 2); i++)
+//		{
+//			for (int j = 0; j < (N / 2); j++)
+//			{
+//				start_score += score[start[i]][start[j]];
+//				link_score += score[link[i]][link[j]];
+//			}
+//		}
+//
+//		if (abs(start_score - link_score) < myMin)
+//		{
+//			myMin = abs(start_score - link_score);
+//		}
+//		return;
+//	}
+//	for (int i = index; i < N; i++)
+//	{
+//		if (team[i]) continue;
+//		else
+//		{
+//			team[i] = true;
+//			TeamSet(i, count + 1);
+//			team[i] = false;
+//		}
+//	}
+//}
+//int main()
+//{
+//	std::cin >> N;
+//	for (int i = 0; i < N; i++)
+//	{
+//		for (int j = 0; j < N; j++) std::cin >> score[i][j];
+//	}
+//	TeamSet(0, 0);
+//
+//	std::cout << myMin << '\n';
+//}
+
+//#include <iostream>
+//#include <vector>
+//#include <cmath>
+//
+//bool team[20];
+//int score[20][20];
+//int N;
+//int myMin{ 999999 };
+//
+//void TeamSet(int index, int count)
+//{
+//	std::vector<int> start;
+//	std::vector<int> link;
+//	int start_score{};
+//	int link_score{};
+//
+//	if (count == (N / 2))
+//	{
+//		for (int i = 0; i < N; i++)
+//		{
+//			if (team[i] == true) start.push_back(i);
+//			else { link.push_back(i); }
+//		}
+//
+//		for (int i = 0; i < (N / 2); i++)
+//		{
+//			for (int j = 0; j < (N / 2); j++)
+//			{
+//				start_score += score[start[i]][start[j]];
+//				link_score += score[link[i]][link[j]];
+//			}
+//		}
+//
+//		if (abs(start_score - link_score) < myMin)
+//		{
+//			myMin = abs(start_score - link_score);
+//		}
+//		return;
+//	}
+//
+//	for (int i = index; i < N; i++)
+//	{
+//		if (team[i]) continue;
+//		else
+//		{
+//			team[i] = true;
+//			TeamSet(i, count + 1);
+//			team[i] = false;
+//		}
+//	}
+//}
+//int main()
+//{
+//	std::cin >> N;
+//	for (int i = 0; i < N; i++)
+//	{
+//		for (int j = 0; j < N; j++) std::cin >> score[i][j];
+//	}
+//	TeamSet(0, 0);
+//	std::cout << myMin << '\n';
+//}
+
+//#include <iostream>
+//#include <vector>
+//#include <cmath>
+//
+//bool team[20];
+//int score[20][20];
+//int N;
+//int myMin{ 9999999 };
+//
+//void TeamSet(int index, int count)
+//{
+//	std::vector<int> start;
+//	std::vector<int> link;
+//	int start_score{};
+//	int link_score{};
+//
+//	if (count == (N / 2))
+//	{
+//		for (int i = 0; i < N; i++)
+//		{
+//			if (team[i] == true) start.push_back(i);
+//			else link.push_back(i);
+//		}
+//		for (int i = 0; i < (N / 2); i++)
+//		{
+//			for (int j = 0; j < (N / 2); j++)
+//			{
+//				start_score += score[start[i]][start[j]];
+//				link_score += score[link[i]][link[j]];
+//			}
+//		}
+//		if (abs(start_score - link_score) < myMin) myMin = abs(start_score - link_score);
+//		return;
+//	}
+//
+//	for (int i = index; i < N; i++)
+//	{
+//		if (team[i]) continue;
+//		else
+//		{
+//			team[i] = true;
+//			TeamSet(i, count + 1);
+//			team[i] = false;
+//		}
+//	}
+//}
+//
+//int main()
+//{
+//	std::cin >> N;
+//	for (int i = 0; i < N; i++)
+//	{
+//		for (int j = 0; j < N; j++) std::cin >> score[i][j];
+//	}
+//	TeamSet(0, 0);
+//	std::cout << myMin << '\n';
+//}
