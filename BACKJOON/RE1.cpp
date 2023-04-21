@@ -268,3 +268,67 @@
 //		std::cout << '\n';
 //	}
 //}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	const int N{ 10 };
+//	int t[N][N]{};
+//
+//	for (int i = 0; i < N; i++)
+//	{
+//		if (i == 0) t[0][0] = 1;
+//		else
+//		{
+//			int preValue;
+//			for (int j = 0; j <= i; j++)
+//			{
+//				preValue = (j - 1 < 0) ? 0 : t[i - 1][j - 1];
+//				t[i][j] = preValue + t[i - 1][j];
+//			}
+//		}
+//	}
+//
+//	for (int i = 0; i < N; i++)
+//	{
+//		for (int j = N - 1; j > i; j--) std::cout << ' ';
+//		for (int j = 0; j <= i; j++) std::cout << t[i][j] << ' ';
+//		std::cout << '\n';
+//	}
+//}
+
+/* --- < 피보나치 수열 > --- */
+
+/*
+< 문제 > :
+	첫 달에는 새로 태어난 토끼 한 쌍만이 존재한다.
+	두 달 이상이 된 토끼는 번식 가능하다.
+	번식 가능한 토끼 한 쌍은 매달 새끼 한 쌍을 낳는다.
+	토끼는 죽지 않는다.
+	숫자를 입력받고 입력받은 숫자를 넘지 않는 피보나치 수열을 출력하세요.
+	만약 10을 입력 받았을 경우 1, 1, 2, 3, 5, 8까지 나열되게끔 작성하세요.
+
+< 해결 방법 > :
+	먼저 기본적인 피보나치 수열의 Base, Recursive Case를 만든다.
+	이 후 입력 받은 값을 넘지 못하는 제약을 걸어 준다.
+*/
+
+//#include <iostream>
+//
+//int Fibo(int N)
+//{
+//	if (N <= 2) return 1;
+//	return Fibo(N - 2) + Fibo(N - 1);
+//}
+//int main()
+//{
+//	int N;
+//	std::cin >> N;
+//
+//	for (int i = 0; i < N; i++)
+//	{
+//		if (Fibo(i) < N) std::cout << Fibo(i) << ' ';
+//		else break;
+//	}
+//}
