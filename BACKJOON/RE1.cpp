@@ -332,3 +332,58 @@
 //		else break;
 //	}
 //}
+
+//#include <iostream>
+//
+//int Fibo(int N)
+//{
+//	if (N <= 2) return 1;
+//	return Fibo(N - 2) + Fibo(N - 1);
+//}
+//int main()
+//{
+//	int N;
+//	std::cin >> N;
+//	for (int i = 0; i < N; i++)
+//	{
+//		if (Fibo(i) < N) std::cout << Fibo(i) << ' ';
+//		else break;
+//	}
+//}
+
+/* --- < 하노이의 탑 > --- */
+
+/*
+< 문제 > :
+	N개의 원판과 기둥 세 개가 있으며 초기에는 가장 왼쪽에 순서대로 쌓여있다.
+	이를 가장 오른쪽 기둥으로 옮기는 퍼즐 게임으로 조건은 다음과 같다.
+	1. 한 번에 하나의 원판만 옮길 수 있다.
+	2. 큰 원판이 작은 원판 위에 있어서는 안된다.
+
+< 해결 방법 > :
+	가장 밑에 깔려있는 원판을 끝으로 옮기려면 위의 원판들을 우선 가운데로 옮겨야 한다.
+	그리고 가운데로 옮겨 놓은 원판도 같은 방식으로 옮겨야 한다.
+*/
+
+//#include <iostream>
+//
+//void Move(int N, char A, char B)
+//{
+//	static int num{};
+//	std::cout << ++num << " : ";
+//	std::cout << A << "에 있는 " << N << "원판을 " << B << "로 옮긴다.\n";
+//}
+//void Hanoi(int N, char A, char B, char C)
+//{
+//	if (N == 1) Move(N, A, C);
+//	else
+//	{
+//		Hanoi(N - 1, A, C, B);
+//		Move(N, A, C);
+//		Hanoi(N - 1, B, A, C);
+//	}
+//}
+//int main()
+//{
+//	Hanoi(3, 'A', 'B', 'C');
+//}
