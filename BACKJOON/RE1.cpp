@@ -387,3 +387,76 @@
 //{
 //	Hanoi(3, 'A', 'B', 'C');
 //}
+
+//#include <iostream>
+//
+//void Move(int N, char A, char B)
+//{
+//	static int num{};
+//
+//	std::cout << ++num << " : ";
+//	std::cout << A << "에 있는 " << N << "원판을 " << B << "로 옮긴다.\n";
+//}
+//void Hanoi(int N, char A, char B, char C)
+//{
+//	if (N == 1) Move(N, A, C);
+//	else
+//	{
+//		Hanoi(N - 1, A, C, B);
+//		Move(N, A, C);
+//		Hanoi(N - 1, B, A, C);
+//	}
+//}
+
+/* --- < 유클리드 호제법 > --- */
+
+/*
+< 문제 > :
+	임의의 두 자연수 a, b가 주어졌을 때. 두 수 사이에 존재하는 최대 공약수( GCD )를 구하라.
+	1. 공약수 : 두 수 이상의 공통된 약수( 나누어서 0으로 떨어지는 값 )
+		=> 최대 공약수 : 공약수 중 가장 큰 수
+	2. 공배수 : 두 수 이상의 공통된 배수( 예를 들어 3과 4의 공배수는 3의 배수이면서 동시에 4의 배수 )
+		=> 최소 공배수 : 공배수 중 가장 작은 수
+
+< 해결 방법 > :
+	임의의 두 자연수 a, b 중 큰 값이 a라고 가정한다.
+	a를 b로 나눈 나머지를 n이라고 하면 ( a % b = n )
+	n이 0일 때, b가 최대 공약수( GCD )이다.
+	만약 n이 0이 아니라면, a에 b값을 다시 넣고 n을 b에 대입한 후 다시 나누는 작업을 반복한다.
+*/
+
+//#include <iostream>
+//
+//int GCD(int a, int b)
+//{
+//	int r;
+//	while (b != 0)
+//	{
+//		r = a % b;
+//		a = b;
+//		b = r;
+//	}
+//	return a;
+//}
+//int main()
+//{
+//	int num1{ 22 };
+//	int num2{ 4 };
+//	std::cout << GCD(num1, num2) << (num1 * num2) / GCD(num1, num2);
+//}
+
+//#include <iostream>
+//
+//int GCD(int a, int b)
+//{
+//	return b != 0 ? GCD(b, a % b) : a;
+//}
+//int main()
+//{
+//	int num1{ 22 };
+//	int num2{ 4 };
+//	std::cout << GCD(num1, num2);
+//}
+
+/* --- < 무한 입력과 중복 확인 > --- */
+
