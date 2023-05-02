@@ -460,3 +460,171 @@
 
 /* --- < 무한 입력과 중복 확인 > --- */
 
+//#include <iostream>
+//
+//int main()
+//{
+//	std::string previous{};
+//	std::string current;
+//
+//	while (std::cin >> current)
+//	{
+//		if (previous == current) {
+//			std::cout << current << " is Repeated word\n";
+//			break;
+//		}
+//		previous = current;
+//	}
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	std::string prev{};
+//	std::string cur;
+//
+//	while (std::cin >> cur)
+//	{
+//		if (prev == cur) break;
+//		prev = cur;
+//	}
+//}
+
+/* --- < 동적 배열의 기초 > --- */
+
+/*
+< 문제 > :
+	사용자로 부터 n의 정수를 입력받고 n크기 만큼의 1차원 동적배열을 문자열 타입으로 만든다.
+	사용자로 부터 영문 이름을 입력 받고 입력 받은 이름들 중 가장 긴 이름을 출력한다.
+
+< 해결 방법 > :
+	동적 배열을 배열의 크기를 변수로 할당 받을 수 있다.
+	가장 긴 이름을 갖는 배열 index를 따로 저장해 둔다.
+	size()멤버 함수는 부호 없는 정수를 반환 하므로 -1과 같은 음수는
+	429496....과 같은 보수로 큰 값이 들어가니 주의 해야 한다.
+*/
+
+//#include <iostream>
+//
+//int main()
+//{
+//	int count;
+//
+//	std::cout << "몇 명의 친구가 있나 : ";
+//	std::cin >> count;
+//
+//	if (count <= 1) return;
+//
+//	std::string* pName = new std::string[count]{};
+//
+//	int longest{};
+//	size_t maxlen{};
+//
+//	for (int i = 0; i < count; i++)
+//	{
+//		std::cout << "이름 " << i + 1 << " 을 입력하세요 : ";
+//		std::cin >> pName[i];
+//
+//		if (pName[i].size() > maxlen) {
+//			maxlen = pName[i].size();
+//			longest = i;
+//		}
+//	}
+//	std::cout << '\n';
+//	std::cout << "이름이 가장 긴 친구는 " << pName[longest] << " 입니다.\n";
+//
+//	delete[] pName;
+//	pName = nullptr;
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	int count;
+//	std::cin >> count;
+//	if (count <= 1) return;
+//
+//	std::string* pName = new std::string[count]{};
+//	int longest{};
+//	size_t max{};
+//
+//	for (int i = 0; i < count; i++)
+//	{
+//		std::cin >> pName[i];
+//
+//		if (pName[i].size() > max)
+//		{
+//			max = pName[i].size();
+//			longest = i;
+//		}
+//	}
+//	std::cout << '\n';
+//	std::cout << pName[longest] << '\n';
+//
+//	delete[] pName;
+//	pName = nullptr;
+//}
+
+/* --- < 삽입 정렬( Insertion Sort ) > --- */
+
+/*
+< 문제 > :
+	앞에서 부터 차례로 진행하면서 자신이 위치해야 할 곳에 값을 삽입하는 방식의 정렬을 만든다.
+	교환( Swap )이 아니라 자신의 위치에 값을 삽입( Insert )하기 때문에 배열을 조작하는 것이 조금 복잡하다.
+
+< 해결 방법 > :
+	0번째 원소 : (0 ~ 0)이므로 아무런 작업 없음
+	1번째 원소 : (1 ~ 0)반복하면서 작은 값을 발견하면 그 다음 위치로 삽입
+	2번째 원소 : (2 ~ 0)반복...
+	3번째 원소 : (3 ~ 0)반복...
+*/
+
+//#include <iostream>
+//
+//void InsertionSort(int input[], int size)
+//{
+//	for (int i = 1; i < size; i++)
+//	{
+//		int j = i;
+//		int target = input[i];
+//
+//		while (--j >= 0 && target < input[j])
+//		{
+//			input[j + 1] = input[j];
+//			input[j] = target;
+//		}
+//	}
+//}
+//int main()
+//{
+//	int arr[5]{ 7,8,2,3,1 };
+//	InsertionSort(arr, 5);
+//	for (int i = 0; i < 5; i++) std::cout << arr[i] << ' ';
+//}
+
+//#include <iostream>
+//
+//void InsertionSort(int input[], int size)
+//{
+//	for (int i = 1; i < size; i++)
+//	{
+//		int j = i;
+//		int target = input[i];
+//
+//		while (--j >= 0 && target < input[j]) {
+//			input[j + 1] = input[j];
+//			input[j] = target;
+//		}
+//	}
+//}
+//int main()
+//{
+//	int arr[5]{ 7,8,2,3,1 };
+//	InsertionSort(arr, 5);
+//	for (int i = 0; i < 5; i++)
+//	{
+//		std::cout << arr[i] << ' ';
+//	}
+//}
