@@ -628,3 +628,177 @@
 //		std::cout << arr[i] << ' ';
 //	}
 //}
+
+/* --- < 퀵 정렬( Quick Sort ) > --- */
+
+/*
+< 문제 > :
+	배열의 특정 원소를 피벗값으로 지정한다.
+	피벗보다 작은 값을 왼쪽으로, 큰 값을 오른쪽으로 정렬한다.
+	피벗 기준으로 리스트를 좌/우로 분할한다.
+	피벗 선택에 따라 알고리즘의 성능이 매우 차이가 난다.
+
+< 해결 방법 > :
+	1. 피벗 지정
+		=> 가운데로 피벗을 지정할 경우, 좌우 블록을 처리하기 위해 왼쪽( i ), 오른쪽( J )을 지정
+	2. 다음 피벗을 찾기 위해 탐색
+		=> arr[i] < pivot 이면 i를 증가
+		=> arr[j] > pivot 이면 j를 감소
+	3. 더 이상 이동이 불가능하면 i와 j의 값 교체
+		=> 즉, 왼쪽에 작은값을 나열하고 오른쪽에 큰 값을 나열한다.
+	4. i와 j값이 교차한다면 pivot을 기준으로 좌우 정렬이 끝난 상태이다.
+	5. pivot을 중심으로 나열된 좌,우 배열을 재귀로 다시 정렬한다.
+*/
+
+//#include <iostream>
+//
+//void PrintArray(int input[], int size)
+//{
+//	for (int i = 0; i < size; i++) std::cout << input[i] << ' ';
+//}
+//void Swap(int& x, int& y)
+//{
+//	int temp = x;
+//	x = y;
+//	y = temp;
+//}
+//void QuickSort(int input[], int left, int right)
+//{
+//	int i = left;
+//	int j = right;
+//	int pivot = input[(left + right) / 2];
+//	int temp;
+//
+//	do {
+//		while (input[i] < pivot) i++;
+//		while (input[j] > pivot) j--;
+//
+//		if (i <= j)
+//		{
+//			Swap(input[i], input[j]);
+//			i++;
+//			j--;
+//		}
+//	} while (i <= j);
+//
+//	if (left < j) QuickSort(input, left, j);
+//	if (i < right) QuickSort(input, i, right);
+//}
+
+//#include <iostream>
+//
+//void PrintArray(int input[], int size)
+//{
+//	for (int i = 0; i < size; i++) std::cout << input[i] << ' ';
+//}
+//void Swap(int& x, int& y)
+//{
+//	int temp = x;
+//	x = y;
+//	y = temp;
+//}
+//void QuickSort(int input[], int left, int right)
+//{
+//	int i = left;
+//	int j = right;
+//	int pivot = input[(left + right) / 2];
+//	int temp;
+//
+//	do {
+//		while (input[i] < pivot) { i++; }
+//		while (input[j] > pivot) { j--; }
+//
+//		if (i <= j)
+//		{
+//			Swap(input[i], input[j]);
+//			i++;
+//			j--;
+//		}
+//	} while (i <= j);
+//
+//	if (left < j) QuickSort(input, left, j);
+//	if (i < right) QuickSort(input, i, right);
+//}
+
+/* --- < 클래스 관계 > --- */
+
+/*
+is part of : Composition 결합성
+	engine is part of car : ~의 구성 요소
+		=> 복잡한 객체는 조금 더 간단한 객체로 구성되어 있다.
+	A is part of B : A는 B의 일부 구성 요소다.
+		A는 한 번에 하나의 객체에만 존재한다.
+		A는 B에 의해 관리된다.
+		A는 B의 존재를 모른다.
+has a : Aggregation 집단화
+	car has tire : ~을 가지고 있다.
+		=> 복잡한 객체는 별도로 관리되는 다른 간단한 객체로 구성되어 있다.
+	A has a B : B는 A의 일부 구성 요소다.
+		=> B는 한 번에 여러 오브젝트에 소속될 수 있다.
+		=> B는 A에 의해 관리되지 않는다.
+		=> B는 A의 존재를 모른다.
+use a : Association 연관화
+	father use a car : ~을 사용할 수 있다.
+	A use a B : B는 A와 관련이 없다.
+		B는 여러 오브젝트에 소속될 수 있다.
+		B는 A에 의해 관리되지 않는다.
+		B는 A의 존재를 알 수도 있고 모를 수도 있다.
+is a : Generalization 일반환 Spectialication 특수화
+	Car <- Suv <- Jeep <- Rubicon
+		<-방향으로 갈수록 일반화 -> 갈수록 특수화
+		일반화 : 공통적으로 가지는 특성을 묶어서 상위 개념을 만드는 것
+		특수화 : 일반화 개념으로 부터 고유 기능만 추가하는 것
+*/
+
+//class TIRE {};
+//class ENGINE {};
+//class CAR
+//{
+//	ENGINE No1;			// #. ENGINE is part of CAR
+//	TIRE* Front;
+//	TIRE* BACK;			// #. CAR has a TIRE
+//};
+//class FATHER
+//{
+//	CAR* SUV;			// #. FATHER use a CAR
+//};
+
+/* --- < 가상 함수( virtual function ) > --- */
+
+/*
+#. < virtual > : 파생 클래스에서 재정의 할 것으로 기대하는 멤버 함수
+	#. 기대한다는 의미는 컴파일 될 때 해당 함수가 사용될지 결정되는 것이 아니라
+	#. 실행시간( runtime )에 어떤 함수를 사용할 지를 결정한다는 의미이다.
+	#. 즉, 함수를 호출하는 시점에서 어떤 함수를 연결( bind )할 지 결정하게 된다.
+
+#. 기반 클래스에 가상 함수로 Attack()을 만들어 놓고
+	=> 이를 상속받은 5개의 직업군 클래스가 각 특성에 맞는 Attack()을 오버라이딩 한다.
+	=> 5개의 직업으로 이루어진 파티를 만들고, 다형성을 이용하여 기반 클래스의 포인터로 한 번에 묶어준다.
+	=> 간단히 for문으로 모든 파생 클래스의 Attack()을 호출할 수 있다.
+*/
+
+//#include <iostream>
+//
+//class Character { public: virtual void Attack(); };
+//
+//class Warrior : public Character { public: void Attack(); };
+//class Archer : public Character { public: void Attack(); };
+//class Wizard : public Character { public: void Attack(); };
+//class Priest : public Character { public: void Attack(); };
+//class Thief : public Character { public: void Attack(); };
+//
+//int main()
+//{
+//	Character* party[5] = {
+//		new Warrior,
+//		new Archer,
+//		new Wizard,
+//		new Priest,
+//		new Thief
+//	};
+//
+//	for (int i = 0; i < 5; i++)
+//	{
+//		party[i]->Attack();
+//	}
+//}
