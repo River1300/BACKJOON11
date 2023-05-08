@@ -802,3 +802,160 @@ is a : Generalization 일반환 Spectialication 특수화
 //		party[i]->Attack();
 //	}
 //}
+
+/* --- < 멤버 함수의 포인터 > --- */
+
+/*
+< 일반 전역 함수 >	    : ret-type (*) (param-list)
+		   #. 예제      : using fptr = int (*) (int)
+		   #. 예제 호출 : fptr(3);
+
+< 정적 멤버 함수 >		: ret-type (*) (param-list)
+		   #. 예제      : using fptr = int (*) (int)
+		   #. 예제 호출 : fptr(3);
+
+< 비 정적 멤버 함수 >   : ret-type (class-name::*) (param-list)
+		   #. 예제      : using fptr = int (MyClass::*) (int)
+		   #. 예제 호출 : (instance.*fptr)(3);
+*/
+
+//#include <iostream>
+//
+//class MyFunctions
+//{
+//public:
+//	static int NormalFunction(int x) { return x; }
+//	static int SquareFunction(int x) { return x * x; }
+//};
+//
+//using FunctionPtr = int(*)(int);
+//
+//int Sigma(FunctionPtr f, int m, int n)
+//{
+//	int sum = 0;
+//	for (int i = m; i <= n; i++) { sum += f(i); }
+//	return sum;
+//}
+//
+//int main()
+//{
+//	std::cout << Sigma(&MyFunctions::NormalFunction, 1, 10) << '\n';
+//}
+
+//#include <iostream>
+//
+//class MyFunctions
+//{
+//public:
+//	int NormalFunction(int x) { return x; }
+//	int SquareFunction(int x) { return x * x; }
+//};
+//
+//using FunctionPtr = int(MyFunctions::*)(int);
+//
+//int Sigma(MyFunctions& instance, FunctionPtr f, int m, int n)
+//{
+//	int sum = 0;
+//	for (int i = m; i <= n; i++)
+//	{
+//		sum += (instance.*f)(i);
+//	}
+//	return sum;
+//}
+//
+//int main()
+//{
+//	MyFunctions mf;
+//	Sigma(mf, &MyFunctions::NormalFunction, 1, 10):
+//}
+
+/* --- < vector의 iterator사용 > --- */
+
+/*
+< iterator > : container를 순회하는 키워드
+< .begin() > : container의 시작 원소를 가리킨다.
+< .end() > : container의 끝 원소 바로 뒤를 가리킨다.
+< size_type > : 원소의 개수의 TYPE
+*/
+
+//#include <iostream>
+//#include <vector>
+//
+//int main()
+//{
+//	std::vector<int> vec{ 11,22,33,44,55,66,77,88,99 };
+//
+//	std::cout << "\t//ex) vec.front(), vec.back()\n";
+//	std::cout << "vec.front() : " << vec.front() << '\n';
+//	std::cout << "vec.back() : " << vec.back() << "\n\n\n";
+//
+//	std::cout << "\t//ex) std::vector<type>::iterator\n";
+//	for (std::vector<int>::iterator itr = vec.begin(); itr != vec.end(); itr++)
+//	{
+//		std::cout << *itr << ' ';
+//	}
+//}
+
+//#include <iostream>
+//#include <vector>
+//
+//int main()
+//{
+//	std::vector<int> vec{ 11, 22, 33, 44, 55, 66, 77, 88, 99 };
+//
+//	std::cout << "\t//ex) std::vector<type>::size_type\n";
+//	for (std::vector<int>::size_type i = 0; i < vec.size(); i++)
+//	{
+//		std::cout << vec.at(i) << ' ';
+//	}
+//}
+
+/* --- < quick-Algorithm > --- */
+
+/*
+< qsort() > : 퀵 정렬 알고리즘
+	=> < void* Base > : container의 시작 지점
+		=> vector.date() : 첫 번째 원소의 주소값을 반환해 준다.
+	=> < size_t Num > : Base부터 몇 개 까지의 원소를 정렬할 것인지
+	=> < size_t Size > : 원소 하나의 크기
+		=> 시작 지점을 void포인터로 받기 때문에 원소 하나의 크기를 자동으로 알 수 없다.
+	=> < CompareFunction > : 값을 비교하는 함수 포인터
+*/
+
+//#include <iostream>
+//#include <vector>
+//#include <algorithm>
+//
+//int Compare(const void* left, const void* right)
+//{
+//	int lhs = *static_cast<const int*>(left);
+//	int rhs = *static_cast<const int*>(right);
+//
+//	if (lhs > rhs) { return -1; }
+//	else if (lhs < rhs) { return 1; }
+//	else { return 0; }
+//
+//	return rhs - lhs;
+//}
+//int main()
+//{
+//	std::vector<int> v{ 7,4,1,8,2,3,10,9,6,5 };
+//
+//	qsort(v.data(), v.size(), sizeof(v[0]), Compare);
+//
+//	for (auto e : v) std::cout << e << ' ';
+//}
+
+//#include <iostream>
+//#include <vector>
+//#include <algorithm>
+//
+//int main()
+//{
+//	std::vector<int> v{ 3,2,5,4,1 };
+//
+//	qsort(v.data(), v.size(), sizeof(v[0]), [](const void* left, const void* right)
+//		{
+//			return *static_cast<const int*>(left) - *static_cast<const int*>(right);
+//		});
+//}
