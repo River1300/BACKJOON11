@@ -959,3 +959,116 @@ is a : Generalization 일반환 Spectialication 특수화
 //			return *static_cast<const int*>(left) - *static_cast<const int*>(right);
 //		});
 //}
+
+/* --- < for_each-Algorithm > --- */
+
+/*
+< for_each() > : 템플릿 형태로 각각에 원소들에 대해서 반복을 실행하는 함수
+	=> < inputiterator > : iterator( 시작 부터 끝까지 )
+		=> vec.begin(), vec.end()
+	=> < function > : 함수( 함수를 받아서 실행 )
+
+< Unary function > : 매개 변수가 한 개인 함수
+< Binary function > : 매개 변수가 두 개인 함수
+*/
+
+//#include <iostream>
+//#include <vector>
+//#include <algorithm>
+//
+//int main()
+//{
+//	std::vector<int> v{ 3,7,4,1,6,2,5 };
+//	std::for_each(v.begin(), v.end(), [](int val) {
+//		std::cout << val * val << ' ';
+//		});
+//}
+
+/* --- < array.erase(std::unique(array.begin(), array.end()), array.end()) > --- */
+
+//#include <iostream>
+//#include <vector>
+//#include <algorithm>
+//#include <string>
+//
+//int main()
+//{
+//	std::vector<int> v;
+//
+//	v.push_back(1);
+//	v.push_back(2);
+//	v.push_back(1);
+//	v.push_back(3);
+//	v.push_back(2);
+//	v.push_back(1);
+//	v.push_back(2);
+//
+//	for (auto e : v) std::cout << e << ' ';
+//	std::cout << "\n\n";
+//
+//	std::unique(v.begin(), v.end());
+//	for (auto e : v) std::cout << e << ' ';
+//	std::cout << "\n\n";
+//
+//	std::sort(v.begin(), v.end());
+//	for (auto e : v) std::cout << e << ' ';
+//	std::cout << "\n\n";
+//
+//	std::vector<int>::iterator itr;
+//	itr = std::unique(v.begin(), v.end());
+//	for (auto e : v) std::cout << e << ' ';
+//	std::cout << "\n\n";
+//
+//	std::cout << *itr << "\n\n";
+//
+//	v.erase(itr, v.end());
+//	for (auto e : v) std::cout << e << ' ';
+//	std::cout << "\n\n";
+//}
+
+/* --- < std::tuple > --- */
+
+//#include <iostream>
+//#include <tuple>
+//
+//int main()
+//{
+//	std::pair<int, std::string> myPair{ 1,"helloween" };
+//	std::cout << myPair.first << " : " << myPair.second << '\n';
+//
+//	std::tuple<int, int, float, std::string> Noodle;
+//	Noodle = std::make_tuple(530, 980, 580.0f, "SinLaMyun");
+//	std::cout << std::get<0>(Noodle);
+//	std::cout << std::get<1>(Noodle);
+//}
+
+/* < std::function 과 std::bind > */
+
+//#include <iostream>
+//#include <functional>
+//
+//void MyFunction(const int arg1) {}
+//
+//struct MyStruct { void operator()() {} };
+//
+//int main()
+//{
+//	std::function<void(const int)> functor1 = MyFunction;
+//	std::function<void()> functor2 = MyStruct();
+//	std::function<void()> functor3 = []() {};
+//}
+
+//#include <iostream>
+//#include <functional>
+//
+//void F(int arg1, char arg2) { std::cout << arg1 << ", " << arg2 << '\n'; }
+//
+//int main()
+//{
+//	auto functor1 = std::bind(F, std::placeholders::_1, std::placeholders::_2);
+//	functor1(1, 'a');
+//	auto functor2 = std::bind(F, 99, std::placeholders::_1);
+//	functor2('b');
+//	auto functor3 = std::bind(F, std::placeholders::_2, std::placeholders::_1);
+//	functor3('c', 3);
+//}
