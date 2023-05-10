@@ -1072,3 +1072,308 @@ is a : Generalization 일반환 Spectialication 특수화
 //	auto functor3 = std::bind(F, std::placeholders::_2, std::placeholders::_1);
 //	functor3('c', 3);
 //}
+
+/* ----- < Binary Search Tree( BST ) > ----- */
+
+/*
+< BST > : 재귀호출, 즉 깊이우선이 편리하다라는 것에서 출발하여 착안한 자료구조
+	#. 트리 내부는 항상 정렬된 상태를 유지한다.
+		=> 원소를 추가하면 자동으로 정렬이 되는 구조( In_Order )
+	#. 모든 노드는 최대 2개의 자식 노드를 가질 수 있다.
+	#. 왼쪽 서브 트리는 노드보다 작은 값이다.
+	#. 오른쪽 서브 트리는 노드보다 큰 값이다.
+	#. 각 노드의 양쪽 서브트리는 BST를 만족해야한다.
+	#. Log n
+*/
+
+//#include <iostream>
+//
+//namespace myTree
+//{
+//	struct Node
+//	{
+//		int mData;
+//		Node* mLeft;
+//		Node* mRight;
+//
+//		Node(int data, Node* left, Node* right)
+//		{
+//			mData = data;
+//			mLeft = left;
+//			mRight = right;
+//		}
+//	};
+//
+//	class BinarySearchTree
+//	{
+//	private:
+//		Node* mpRoot;
+//
+//	public:
+//		BinarySearchTree() { mpRoot = CreateNode(0); }
+//
+//		Node* GetRoot() { return mpRoot; }
+//
+//		Node* CreateNode(int data) { return new Node(data, nullptr, nullptr); }
+//
+//		Node* Insert(Node* pParent, int data)
+//		{
+//			if (pParent == nullptr) { return CreateNode(data); }
+//			if (data < pParent->mData) { Insert(pParent->mLeft, data); }
+//			if (data > pParent->mData) { Insert(pParent->mRight, data); }
+//			return pParent;
+//		}
+//
+//	public:
+//		void Visit(Node* pNode) { std::cout << pNode->mData << "-> "; }
+//
+//		void In_Order(Node* pNode)
+//		{
+//			if (pNode == nullptr) { return; }
+//			In_Order(pNode->mLeft);
+//			Visit(pNode);
+//			In_Order(pNode->mRight);
+//		}
+//	};
+//}
+//int main()
+//{
+//	myTree::BinarySearchTree bst;
+//
+//	auto pRoot = bst.Insert(nullptr, 8);
+//	bst.Insert(pRoot, 3);
+//	bst.Insert(pRoot, 10);
+//	bst.Insert(pRoot, 1);
+//	bst.Insert(pRoot, 6);
+//
+//	bst.In_Order(pRoot);
+//}
+
+//#include <iostream>
+//
+//namespace myTree
+//{
+//	struct Node
+//	{
+//		int mData;
+//		Node* mLeft;
+//		Node* mRight;
+//
+//		Node(int data, Node* left, Node* right)
+//		{
+//			mData = data;
+//			mLeft = left;
+//			mRight = right;
+//		}
+//	};
+//
+//	class BinarySearchTree
+//	{
+//	private:
+//		Node* mpRoot;
+//
+//	public:
+//		BinarySearchTree() { mpRoot = CreateNode(0); }
+//
+//		Node* GetRoot() { return mpRoot; }
+//
+//		Node* CreateNode(int data) { return new Node(data, nullptr, nullptr); }
+//		Node* Insert(Node* pParent, int data)
+//		{
+//			if (pParent == nullptr) { return CreateNode(data); }
+//			if (data < pParent->mData) { pParent->mLeft = Insert(pParent->mLeft, data); }
+//			if (data > pParent->mData) { pParent->mRight = Insert(pParent->mRight, data); }
+//			return pParent;
+//		}
+//
+//	public:
+//		void Visit(Node* pNode) { std::cout << pNode->mData << "-> "; }
+//		void In_Order(Node* pNode)
+//		{
+//			if (pNode == nullptr) { return; }
+//			In_Order(pNode->mLeft);
+//			Visit(pNode);
+//			In_Order(pNode->mRight);
+//		}
+//	};
+//}
+//int main()
+//{
+//	myTree::BinarySearchTree bst;
+//
+//	auto pRoot = bst.Insert(nullptr, 8);
+//	bst.Insert(pRoot, 3);
+//	bst.Insert(pRoot, 10);
+//	bst.In_Order(pRoot);
+//}
+
+//#include <iostream>
+//
+//namespace myTree
+//{
+//	struct Node
+//	{
+//		int mData;
+//		Node* mLeft;
+//		Node* mRight;
+//
+//		Node(int data, Node* left, Node* right)
+//		{
+//			mData = data;
+//			mLeft = left;
+//			mRight = right;
+//		}
+//	};
+//
+//	class BinarySearchTree
+//	{
+//	private:
+//		Node* mpRoot;
+//
+//	public:
+//		BinarySearchTree() { mpRoot = CreateNode(0); }
+//
+//		Node* GetRoot() { return mpRoot; }
+//
+//		Node* CreateNode(int data) { return new Node(data, nullptr, nullptr); }
+//
+//		Node* Insert(Node* pParent, int data)
+//		{
+//			if (pParent == nullptr) { return CreateNode(data); }
+//			if (data < pParent->mData) { pParent->mLeft = Insert(pParent->mLeft, data); }
+//			if (data > pParent->mData) { pParent->mRight = Insert(pParent->mRight, data); }
+//			return pParent;
+//		}
+//
+//	public:
+//		void Visit(Node* pNode) { std::cout << pNode->mData << "-> "; }
+//
+//		void In_Order(Node* pNode)
+//		{
+//			if (pNode == nullptr) { return; }
+//			In_Order(pNode->mLeft);
+//			Visit(pNode);
+//			In_Order(pNode->mRight);
+//		}
+//	};
+//}
+//int main()
+//{
+//	myTree::BinarySearchTree bst;
+//	auto pRoot = bst.Insert(nullptr, 8);
+//	bst.Insert(pRoot, 3);
+//	bst.In_Order(pRoot);
+//}
+
+//#include <iostream>
+//
+//namespace myTree
+//{
+//	struct Node
+//	{
+//		int mData;
+//		Node* mLeft;
+//		Node* mRight;
+//
+//		Node(int data, Node* left, Node* right)
+//		{
+//			mData = data;
+//			mLeft = left;
+//			mRight = right;
+//		}
+//	};
+//
+//	class BinarySearchTree
+//	{
+//	private:
+//		Node* mpRoot;
+//
+//	public:
+//		BinarySearchTree() { mpRoot = CreateNode(0); }
+//
+//		Node* GetRoot() { return mpRoot; }
+//
+//		Node* CreateNode(int data) { return new Node(data, nullptr, nullptr); }
+//
+//		Node* Insert(Node* pParent, int data)
+//		{
+//			if (pParent == nullptr) { return CreateNode(data); }
+//			if (data < pParent->mData) { pParent->mLeft = Insert(pParent->mLeft, data); }
+//			if (data > pParent->mData) { pParent->mRight = Insert(pParent->mRight, data); }
+//			return pParent;
+//		}
+//
+//	public:
+//		void Visit(Node* pNode) { std::cout << pNode -> mData << "-> "; }
+//		void In_Order(Node* pNode)
+//		{
+//			if (pNode == nullptr) return;
+//			In_Order(pNode->mLeft);
+//			Visit(pNode);
+//			In_Order(pNode->mRight);
+//		}
+//	};
+//}
+//int main()
+//{
+//	myTree::BinarySearchTree bst;
+//
+//	auto pRoot = bst.Insert(nullptr, 8);
+//	bst.Insert(pRoot, 3);
+//	bst.In_Order(pRoot);
+//}
+
+//#include <iostream>
+//
+//namespace myTree
+//{
+//	// 1. 노드 구성
+//	struct Node
+//	{
+//		// 2. 노드 속성
+//		int mData;
+//		Node* pLeft;
+//		Node* pRight;
+//
+//		// 3. 노드 생성자
+//		Node(int data, Node* left, Node* right)
+//		{
+//			mData = data;
+//			pLeft = left;
+//			pRight = right;
+//		}
+//	};
+//	// 4. 트리
+//	class BinarySearchTree
+//	{
+//		// 5. 트리 속성
+//	private:
+//		Node* mpRoot;
+//
+//	public:
+//		// 6. 트리 생성자
+//		BinarySearchTree() { mpRoot = CreateNode(0); }
+//		// 7. 트리 반환
+//		Node* GetRoot() { return mpRoot; }
+//		// 8. 트리 삽입
+//		Node* CreateNode(int data) { return new Node(data, nullptr, nullptr); }
+//		Node* Insert(Node* pParent, int data)
+//		{
+//			if (pParent == nullptr) { return CreateNode(data); }
+//			if (data < pParent->mData) { Insert(pParent->pLeft, data); }
+//			if (data > pParent->mData) { Insert(pParent->pRight, data); }
+//
+//			return pParent;
+//		}
+//
+//	public:
+//		void Visit(Node* pNode) { std::cout << pNode->mData << "-> "; }
+//		void In_Order(Node* pNode)
+//		{
+//			if (pNode == nullptr) return;
+//			In_Order(pNode->pLeft);
+//			Visit(pNode);
+//			In_Order(pNode->pRight);
+//		}
+//	};
+//}
