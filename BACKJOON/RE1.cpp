@@ -1377,3 +1377,63 @@ is a : Generalization 일반환 Spectialication 특수화
 //		}
 //	};
 //}
+
+//#include <iostream>
+//
+//namespace myTree
+//{
+//	struct Node
+//	{
+//		int mData;
+//		Node* pLeft;
+//		Node* pRight;
+//
+//		Node(int data, Node* left, Node* right)
+//		{
+//			mData = data;
+//			pLeft = left;
+//			pRight = right;
+//		}
+//	};
+//
+//	class BinarySearchTree
+//	{
+//	private:
+//		Node* mpRoot;
+//
+//	public:
+//		BinarySearchTree() { mpRoot = CreateNode(0); }
+//		Node* GetRoot() { return mpRoot; }
+//
+//		Node* CreateNode(int data)
+//		{
+//			return new Node(data, nullptr, nullptr);
+//		}
+//
+//		Node* Insert(Node* pParent, int data)
+//		{
+//			if (pParent == nullptr) return CreateNode(data);
+//			if (data < pParent->mData) return Insert(pParent->pLeft, data);
+//			if (data > pParent->mData) return Insert(pParent->pRight, data);
+//			return pParent;
+//		}
+//
+//	public:
+//		void Visit(Node* pNode) { std::cout << pNode->mData << "-> "; }
+//		void In_Order(Node* pNode)
+//		{
+//			if (pNode == nullptr) return;
+//			In_Order(pNode->pLeft);
+//			Visit(pNode);
+//			In_Order(pNode->pRight);
+//		}
+//	};
+//}
+//
+//int main()
+//{
+//	myTree::BinarySearchTree bst;
+//
+//	auto pRoot = bst.Insert(nullptr, 8);
+//	bst.Insert(pRoot, 3);
+//}
