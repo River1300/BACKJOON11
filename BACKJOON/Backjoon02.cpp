@@ -200,3 +200,52 @@
 //		: B > C ? B
 //		: C) * 100;
 //}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	int N{ 2000 };
+//
+//	std::cout << (!(N % 4) && N % 100 || !(N % 400)) << '\n';
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	int x{ 3 }, y{ -1 };
+//
+//	std::cout << 1 + 2 * (y < 0) + (x * y < 0) << '\n';
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	int H{ 3 }, M{ 15 };
+//
+//	std::cout << (H + 24 - (M < 45)) % 24 << ' ' << (M + 15) % 60 << '\n';
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	int A{ 10 }, B{ 35 }, C{ 127 };
+//
+//	std::cout << (A + B / 60) % 24 << ' ' << (B += C) % 60 << '\n';
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	int A{ 3 }, B{ 2 }, C{ 6 };
+//
+//	std::cout << (A == B && A == C ? 100 + A * 10
+//		: A == B || A == C ? 10 + A
+//		: B == C ? 10 + B
+//		: B > C ? B
+//		: C) * 100;
+//}

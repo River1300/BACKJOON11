@@ -168,3 +168,46 @@
 //
 //	std::cout << num1 * num2 << '\n';
 //}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	double A, B;
+//	std::cin >> A >> B;
+//	std::cout.precision(10);
+//	std::cout << A / B << '\n';
+//
+//	float C;
+//	std::cin >> C;
+//	std::cout.precision(5);
+//	B = C / A;
+//	std::cout << C << ' ' << A / B << ' ' << C / A << '\n';
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	std::string pName{};
+//	std::string cName;
+//
+//	while (std::cin >> cName)
+//	{
+//		if (pName == cName) break;
+//		pName = cName;
+//	}
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	int a{ 1234567890 };
+//
+//	std::cout << a << '\n';
+//	std::cout << a % 10 << '\n';
+//	std::cout << a / 10 << '\n';
+//	std::cout << a % 100 << '\n';
+//	std::cout << (a / 100) + (a / 10) << '\n';
+//}

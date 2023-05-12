@@ -129,3 +129,30 @@
 //	} while (N != temp);
 //	std::cout << count << '\n';
 //}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	int N{ 10 };
+//	std::cout << N * (N + 1) / 2 << '\n';
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	int N;
+//	int t{};
+//	int count{};
+//
+//	std::cin >> N;
+//	t = N;
+//
+//	do {
+//		N = ((N / 10) + (N % 10)) % 10 + ((N % 10) * 10);
+//		count++;
+//	} while (N != t);
+//
+//	std::cout << count << '\n';
+//}
