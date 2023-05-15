@@ -113,3 +113,218 @@
 	#. 반대로 정수형에서 명시적으로 열거형으로 변환이 가능하다.
 	#. 열거형은 상수로 해석된다.
 */
+
+//#include <iostream>
+//
+//enum AttackType { Phsycal, Magical, Fixed };
+//enum Color { White = 0xFFFFFF, Magenta = 0xFF00FF, Pink = 0xFFC0CB };
+//
+//int main()
+//{
+//	AttackType shotSword{ Phsycal };
+//	Color wall{ Pink };
+//
+//	switch (shotSword)
+//	{
+//	case Phsycal:
+//		std::cout << "물리 데미지 3을 입혔다.\n";
+//		break;
+//	case Magical:
+//		std::cout << "마법 데미지 100을 입혔다.\n";
+//		break;
+//	case Fixed:
+//		std::cout << "고정 데미지 30을 입혔다.\n";
+//		break;
+//	default:
+//		std::cout << "빗나감!!!\n";
+//		break;
+//	}
+//
+//	switch (wall)
+//	{
+//	case White:
+//		std::cout << "흰색 칭을 한다.\n";
+//		break;
+//	case Magenta:
+//		std::cout << "갈색 칠을 한다\n";
+//		break;
+//	case Pink:
+//		std::cout << "분홍색 칠을 한다.\n";
+//		break;
+//	default:
+//		std::cout << "회색 칠을 한다.\n";
+//		break;
+//	}
+//
+//	enum QuestFlag { None = 0, Q1 = 1, Q2 = 2, Q3 = 4, Q4 = 8, Q5 = 16 };
+//
+//	int QuestComplete{ None };
+//
+//	QuestComplete = Q1;
+//	QuestComplete = QuestFlag(QuestComplete | Q3);
+//	QuestComplete = QuestFlag(QuestComplete | Q4);
+//	if (QuestComplete && Q1 && QuestComplete & Q3)
+//	{
+//		std::cout << "둘다 참이기 때문에...\n";
+//	}
+//}
+
+/* --- < 구조체( Structure ) > --- */
+
+/*
+< 구조체 > : 다양한 type을 하나의 카테고리로 묶을 수 있다.
+*/
+
+//#include <iostream>
+//
+//struct Status
+//{
+//	int HP;
+//	int MP;
+//	int POWER;
+//	int MAGIC;
+//};
+//int main()
+//{
+//	Status warrior{ 100,0,10,0 };
+//	warrior.HP = 999;
+//	warrior.MP = 5;
+//	warrior.POWER = 32;
+//	warrior.MAGIC = 1;
+//
+//	warrior = { 10000,10,99,3 };
+//}
+
+/* ----- < 배열 > ----- */
+//
+//
+//
+//
+//
+/* --- < 배열( Array ) > --- */
+
+/*
+< 배열 > : 동일한 형식의 값을 여러 개 저장할 수 있는 기능
+	#. 형식 변수명[크기];
+	#. 변수명[인덱스] = 값;
+	#. 변수명 뒤에 대괄호[]를 붙여 주고 크기를 지정하면 배열로 선언이 가능하다.
+		#. []기호를 첨자( subscript )라고 부른다.
+	#. 값을 가져오거나 사용할 때는 변수명 뒤에 대괄호로 인덱스( 순서 )를 지정해 줘야 한다.
+	#. 인덱스는 0을 기준으로 출발한다.
+
+< 배열의 크기 지정 > : 배열 첨자는 다양한 형태로 지정이 가능하다.
+	#. 다만, 배열을 선언할 때 크기는 상수만 가능하다.
+*/
+
+//#include <iostream>
+//
+//enum Order { Friend = 10 };
+//struct Point2D
+//{
+//	double x;
+//	double y;
+//};
+//
+//int main()
+//{
+//	int arr[5];
+//	arr[0] = 1; arr[1] = 2; arr[2] = 3; arr[3] = 4; arr[4] = 5;
+//	for (int i = 0; i < 5; i++) std::cout << arr[i] << ' ';
+//
+//	int arr1[5]{};
+//	int arr2[Friend]{};
+//
+//	int x{ 1 };
+//	// int arr3[x]; error
+//	int arr4[3 * 3]{};
+//
+//	Point2D pt[3]
+//	{
+//		{1.0, 1.0},
+//		{2.0, 2.0},
+//		{3.0, 3.0}
+//	};
+//	pt[0].x = 1.5;
+//	pt[1].y = 5.1;
+//
+//	std::cout << pt[0].x << ", " << pt[0].y << '\n';
+//	std::cout << pt[1].x << ", " << pt[1].y << '\n';
+//
+//	int myArray[15]{
+//		0,0,1,0,0,
+//		0,1,1,1,0,
+//		1,1,1,1,1
+//	};
+//
+//	for (int i = 0; i < 15; i++)
+//	{
+//		std::cout << myArray[i] << ' ';
+//		if ((i + 1) % 5 == 0) { std::cout << '\n'; }
+//	}
+//}
+
+/* --- < 2차원 배열( 2-Dimensional Array ) > --- */
+
+/*
+< 2차원 배열 > : 배열의 배열이라는 개념으로 배열 뒤에 다시 배열을 붙여서 [][]표기한다.
+	#. 크기를 지정할 때는 [행][열]과 같이 지정한다.
+		=> 가로( ㅡ )로 줄을 그으며 아래로 세는 것을 행
+		=> 세로( ㅣ )로 줄을 그으며 옆으로 세는 것을 열
+*/
+
+//#include <iostream>
+//
+//int main()
+//{
+//	int arr[3][5]
+//	{
+//		{0,0,1,0,0},
+//		{0,1,1,1,0},
+//		{1,1,1,1,1}
+//	};
+//
+//	for (int i = 0; i < 3; i++)
+//	{
+//		for (int j = 0; j < 5; j++)
+//		{
+//			std::cout << arr[i][j] << ' ';
+//		}
+//		std::cout << '\n';
+//	}
+//}
+
+//#include <iostream>
+//#include <array>
+//#include <vector>
+//
+//int main()
+//{
+//	std::array<std::array<int, 5>, 3> arr
+//	{
+//		0,0,1,0,0,
+//		0,1,1,1,0,
+//		1,1,1,1,1
+//	};
+//
+//	for (int i = 0; i < 3; i++)
+//	{
+//		for (int j = 0; j < 5; j++)
+//		{
+//			std::cout << arr[i][j] << ' ';
+//		}	std::cout << '\n';
+//	}
+//
+//	std::vector<std::vector<int>> vec(3, std::vector<int>(5));
+//
+//	vec[0] = { 0,0,1,0,0 };
+//	vec[1] = { 0,1,1,1,0 };
+//	vec[2] = { 1,1,1,1,1 };
+//
+//	for (int i = 0; i < 3; i++)
+//	{
+//		for (int j = 0; j < 5; j++)
+//		{
+//			std::cout << vec[i][j] << ' ';
+//		}	std::cout << '\n';
+//	}
+//}

@@ -355,3 +355,244 @@
 //
 //	std::cout << (count / 10) * 100 << "%\n";
 //}
+
+//#include <iostream>
+//#include <string>
+//
+//int main()
+//{
+//	int A, B, C;
+//	int arr[10]{};
+//	int result{};
+//
+//	std::cin >> A >> B >> C;
+//	result = A * B * C;
+//
+//	std::string stringToNum = std::to_string(result);
+//	for (int i = 0; i < stringToNum.size(); i++) arr[stringToNum[i] - '0']++;
+//	for (int i = 0; i < 10; i++) std::cout << arr[i] << '\n';
+//}
+
+//#include <iostream>
+//#include <string>
+//
+//int main()
+//{
+//	int A, B, C;
+//	int arr[10]{};
+//	int result{};
+//
+//	std::cin >> A >> B >> C;
+//	result = A * B * C;
+//
+//	std::string stringToNum = std::to_string(result);
+//
+//	for (int i = 0; i < stringToNum.size(); i++)
+//	{
+//		arr[stringToNum[i] - '0']++;
+//	}
+//	for (int i = 0; i < 10; i++) std::cout << arr[i] << '\n';
+//}
+
+//#include <iostream>
+//#include <string>
+//
+//int main()
+//{
+//	int A, B, C;
+//	int arr[10]{};
+//	int result{};
+//
+//	std::cin >> A >> B >> C;
+//	result = A * B * C;
+//
+//	std::string stringToNum = std::to_string(result);
+//
+//	for (int i = 0; i < stringToNum.size(); i++) arr[stringToNum[i] - '0']++;
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	int inputNumber[10];
+//	int count[42]{};
+//	int other{};
+//
+//	for (int i = 0; i < 10; i++)
+//	{
+//		std::cin >> inputNumber[i];
+//		inputNumber[i] = inputNumber[i] % 42;
+//	}
+//
+//	for (int i = 0; i < 10; i++) count[inputNumber[i]]++;
+//	for (int i = 0; i < 42; i++)
+//	{
+//		if (count[i] != 0) other++;
+//	}
+//	std::cout << other << '\n';
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	int inputNumber[10];
+//	int count[42]{};
+//	int other{};
+//
+//	for (int i = 0; i < 10; i++)
+//	{
+//		std::cin >> inputNumber[i];
+//		inputNumber[i] = inputNumber[i] % 42;
+//	}
+//
+//	for (int i = 0; i < 10; i++) count[inputNumber[i]]++;
+//
+//	for (int i = 0; i < 42; i++)
+//	{
+//		if (count[i] != 0) other++;
+//	}
+//	std::cout << other << '\n';
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	int N;
+//	std::cin >> N;
+//
+//	float* scores = new float[N];
+//	float max{};
+//	float avg{};
+//
+//	for (int i = 0; i < N; i++)
+//	{
+//		std::cin >> scores[i];
+//		if (scores[i] > max) max = scores[i];
+//	}
+//
+//	for (int i = 0; i < N; i++) avg += scores[i] / max * 100;
+//
+//	std::cout.precision(4);
+//	std::cout << avg / static_cast<float>(N) << '\n';
+//
+//	delete[] scores;
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	int N;
+//	std::cin >> N;
+//
+//	float* scores = new float[N];
+//	float max{};
+//	float avg{};
+//
+//	for (int i = 0; i < N; i++)
+//	{
+//		std::cin >> scores[i];
+//		if (scores[i] > max) max = scores[i];
+//	}
+//	for (int i = 0; i < N; i++) avg += scores[i] / max * 100;
+//
+//	std::cout.precision(4);
+//	std::cout << avg / static_cast<float>(N) << '\n';
+//	delete[] scores;
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	int N;
+//	std::cin >> N;
+//	int* result = new int[N] {};
+//
+//	for (int j = 0; j < N; j++)
+//	{
+//		std::string scores;
+//		std::cin >> scores;
+//		int count{};
+//
+//		for (int i = 0; i < scores.size(); i++)
+//		{
+//			if (scores[i] == 'O')
+//			{
+//				count++;
+//				result[j] += count;
+//			}
+//			else if (scores[i] == 'X')
+//			{
+//				count = 0;
+//			}
+//		}
+//	}
+//	for (int i = 0; i < N; i++) std::cout << result[i] << '\n';
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	int C;
+//	std::cin >> C;
+//
+//	for (int i = 0; i < C; i++)
+//	{
+//		int N;
+//		float avg{};
+//
+//		std::cin >> N;
+//		float* scores = new float[N] {};
+//
+//		for (int j = 0; j < N; j++)
+//		{
+//			std::cin >> scores[j];
+//			avg += scores[j];
+//		}
+//
+//		avg /= N;
+//		float count{};
+//
+//		for (int j = 0; j < N; j++)
+//		{
+//			if (scores[j] > avg) count++;
+//		}
+//
+//		std::cout.precision(3);
+//		std::cout.setf(std::ios::fixed, std::ios::floatfield);
+//		std::cout << (count / static_cast<float>(N)) * 100 << "%\n";
+//	}
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	int N;
+//	float avg{};
+//
+//	std::cin >> N;
+//	float* scores = new float[N] {};
+//
+//	for (int i = 0; i < N; i++)
+//	{
+//		std::cin >> scores[i];
+//		avg += scores[i];
+//	}
+//	avg /= N;
+//	float count{};
+//
+//	for (int i = 0; i < N; i++)
+//	{
+//		if (scores[i] > avg) count++;
+//	}
+//
+//	std::cout.precision(3);
+//	std::cout.setf(std::ios::fixed, std::ios::floatfield);
+//	std::cout << (count / static_cast<float>(N)) * 100 << "%\n";
+//}
