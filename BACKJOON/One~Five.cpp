@@ -328,3 +328,285 @@
 //		}	std::cout << '\n';
 //	}
 //}
+
+/* --- < 좌측값( L_Value )과 우측값( R_Value ) > --- */
+
+/*
+< L_Value > : 저장할 수 있는 실명의 객체
+	#. 한줄의 코드를 넘어서도 lvalue는 지워지지 않는다.
+	#. 주로 변수를 지칭한다.
+	#. rvalue는 lvalue로 변환될 수 없다.
+
+< R_Value > : 저장할 수 없는 무명의 객체
+	#. 현재 식 이외에는 유지되지 않는 임시 값이다.
+	#. 리터럴, 상수, 연산식등을 지칭한다.
+	#. lvalue가 rvalue로 변환될 수 있다.
+
+< 배열의 이름은 L_Value가 아니다 > : 배열 이름은 메모리의 위치만 지정할 뿐이다.
+	#. 배열 첨자를 이용하여 특별한 공간을 지정하고 있을 때 lvalue가 된다.
+*/
+
+//#include <iostream>
+//
+//int main()
+//{
+//	int arrayOne[5]{ 1,2,3,4,5 };
+//	int arrayTwo[5]{};
+//
+//	arrayTwo[0] = arrayOne[0];
+//
+//	//arrayTwo = arrayOne;
+//}
+
+/* --- < 문자열( Character Array, String ) > --- */
+
+/*
+< 문자열 > : 문자들로 이루어진 집합을 말한다.
+	#. 문자( Character ) + 배열( Array )
+	#. 문자 리터럴 : 작은 따옴표로 둘러 싸여 있다. 'a'
+	#. 문자열 리터럴 : 큰 따옴표로 둘러 싸여 있다. "Hello"
+*/
+
+//#include <iostream>
+//
+//int main()
+//{
+//	char c[6]{ 'R','i','v','e','r','\0' };
+//	c[0] = 'M';
+//
+//	char std[6]{ "River" };
+//}
+
+//#include <iostream>
+//
+//struct Student
+//{
+//	char name[10];
+//	int num;
+//	int score;
+//};
+//int main()
+//{
+//	Student tom;
+//	std::cout << "Input : ";
+//	std::cin >> tom.name >> tom.num >> tom.score;
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	char myText[20]{ "Greetings!" };
+//
+//	std::cout << myText << " : " << &myText << '\n';
+//	std::cout << "Greetings!" << " : " << &"Greetings!" << '\n';
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	char nameOne[10]{ "River" };
+//	char* pointer{ nameOne };
+//
+//	std::cout << nameOne << " : " << &nameOne << " : " << &nameOne[0] << '\n';
+//	std::cout << pointer << " : " << &pointer << " : " << (pointer + 0) << '\n';
+//	std::cout << sizeof nameOne << " : " << sizeof nameOne[0] << " : "
+//		<< sizeof & nameOne << " : " << sizeof & nameOne[0] << '\n';
+//
+//	const char* name = "River";
+//	std::cout << name << " : " << (void*)name << '\n';
+//}
+
+/* --- < 문자열 스트림( String Stream ) > --- */
+
+/*
+< stream > : 입출력을 추상화해서 나타내어 준다.
+
+< sstream( string ) > : 문자열로부터 입력을 받는다.
+	#. ostring stream : 문자열 포맷을 조합하여 저장할 때 사용한다.
+	#. string stream : 문자열에서 내가 원하는 자료형의 데이터를 추출할 때 사용한다.
+	#. istring stream : 문자열 포맷을 parsing할 때 사용한다.
+		#. parsing : 일련의 문자열을 의미있는 token( 어휘 분석의 단위 )으로 분해하고 그것들로 이루어진 Parse tree를 만드는 과정
+
+< istream( input ) > : 사용자로부터 입력 받는다.
+
+< ifstream( file ) > : 파일로부터 입력 받는다.
+*/
+
+//#include <iostream>
+//
+//int main()
+//{
+//	int array[10];
+//	int sum{};
+//
+//	for (int i = 0; i < 10; i++)
+//	{
+//		std::cout << i + 1 << " : ";
+//		std::cin >> array[i];
+//		sum += array[i];
+//	}
+//	std::cout << sum / 10;
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	const int COLUMN{ 10 };
+//	int array[COLUMN];
+//	int big{}, smol{};
+//
+//	for (int i = 0; i < COLUMN; i++)
+//	{
+//		std::cout << i + 1 << " : ";
+//		std::cin >> array[i];
+//		if (big < array[i] || i == 0) big = array[i];
+//		if (smol > array[i] || i == 0) smol = array[i];
+//	}
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	const int COLUMN{ 10 };
+//	int array[COLUMN];
+//	int big{};
+//	int index{};
+//	int temp;
+//
+//	for (int i = 0; i < COLUMN; i++)
+//	{
+//		std::cout << i + 1 << " : ";
+//		std::cin >> array[i];
+//	}
+//
+//	for (int i = 0; i < COLUMN; i++)
+//	{
+//		big = -1;
+//		for (int j = i; j < COLUMN; j++)
+//		{
+//			if (big < array[j])
+//			{
+//				big = array[j];
+//				index = j;
+//			}
+//		}
+//		temp = array[index];
+//		array[index] = array[i];
+//		array[i] = temp;
+//	}
+//}
+
+//#include <iostream>
+//
+//int array[10]{};
+//
+//void Quick(int* arr, int Start, int end)
+//{
+//	if (Start >= end) return;
+//	int key = Start;
+//	int go = Start + 1;
+//	int back = end;
+//	int temp;
+//
+//	while (go <= back)
+//	{
+//		while (arr[go] >= arr[key] && go <= end) go++;
+//		while (arr[back] <= arr[key] && back > Start) back--;
+//		if (go > back)
+//		{
+//			temp = arr[back];
+//			arr[back] = arr[key];
+//			arr[key] = temp;
+//		}
+//		else
+//		{
+//			temp = arr[back];
+//			arr[back] = arr[go];
+//			arr[go] = temp;
+//		}
+//	}
+//	Quick(arr, Start, back - 1);
+//	Quick(arr, back + 1, end);
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	const int COLUMN{ 10 };
+//	int array[COLUMN];
+//	int No1[COLUMN];
+//	int num{};
+//
+//	for (int i = 0; i < COLUMN; i++)
+//	{
+//		std::cout << i + 1 << " : ";
+//		std::cin >> array[i];
+//	}
+//	for (int i = 0; i < COLUMN; i++)
+//	{
+//		num = 10;
+//		for (int j = 0; j < COLUMN; j++)
+//		{
+//			if (array[i] > array[j]) num--;
+//		}
+//		No1[i] = num;
+//	}
+//	for (int i = 0; i < COLUMN; i++) std::cout << array[i] << ' ';
+//	for (int i = 0; i < COLUMN; i++) std::cout << No1[i] << ' ';
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	int array1[2][4]{
+//		{1,2,3,4},
+//		{5,6,7,8}
+//	};
+//	int array2[4][2];
+//
+//	for (int i = 0; i < 2; i++)
+//	{
+//		for (int j = 0; j < 4; j++) array2[j][i] = array1[i][j];
+//	}
+//}
+
+//#include <iostream>
+//
+//int array[5][5];
+//
+//void WriteRecord(void)
+//{
+//	int sum;
+//	for (int i = 0; i < 4; i++)
+//	{
+//		sum = 0;
+//		std::cout << i + 1 << " : ";
+//		for (int j = 0; j < 4; j++)
+//		{
+//			std::cout << j + 1 << " : ";
+//			std::cin >> array[i][j];
+//			sum += array[i][j];
+//		}
+//		array[i][4] = sum;
+//	}
+//}
+//void WriteSumRecord(void)
+//{
+//	int sum;
+//	for (int i = 0; i < 4; i++)
+//	{
+//		sum = 0;
+//		for (int j = 0; j < 4; j++)
+//		{
+//			sum += array[j][i];
+//		}
+//		array[4][i] = sum;
+//		array[4][4] += sum;
+//	}
+//}

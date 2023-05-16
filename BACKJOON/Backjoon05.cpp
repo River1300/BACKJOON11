@@ -190,3 +190,98 @@
 //	std::cout << count << '\n';
 //}
 
+//#include <iostream>
+//
+//int main()
+//{
+//	int num[10000]{ 1 };
+//	int temp;
+//
+//	for (int i = 0; i < 10000; i++)
+//	{
+//		if (i < 10) num[i + i] = 1;
+//		else if (i < 100) num[i + i / 10 + i % 10] = 1;
+//		else if (i < 1000) num[i + i / 100 + i % 100 / 10 + i % 10] = 1;
+//		else if (i < 10000)
+//		{
+//			temp = i + i / 1000 + i % 1000 / 100 + i % 100 / 10 + i % 10;
+//			if (temp < 10000) num[temp] = 1;
+//		}
+//	}
+//	for (int i = 1; i < 10000; i++)
+//	{
+//		if (!num[i]) std::cout << i << '\n';
+//	}
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	int num[10000]{ 1 };
+//	int temp;
+//
+//	for (int i = 0; i < 10000; i++)
+//	{
+//		if (i < 10) num[i + i] = 1;
+//		else if (i < 100) num[i + i / 10 + i % 10] = 1;
+//		else if (i < 1000) num[i + i / 100 + i % 100 / 10 + i % 10] = 1;
+//		else if (i < 10000)
+//		{
+//			temp = i + i / 1000 + i % 1000 / 100 + i % 100 / 10 + i % 10;
+//			if (temp < 10000) num[temp] = 1;
+//		}
+//	}
+//	for (int i = 1; i < 10000; i++)
+//	{
+//		if (!num[i]) std::cout << i << '\n';
+//	}
+//}
+
+//#include <iostream>
+//
+//int HanNum(int N)
+//{
+//	int count{};
+//
+//	if (N < 100) count = N;
+//	else
+//	{
+//		count = 99;
+//		for (int i = 100; i <= N; i++)
+//		{
+//			if (((i / 100) - (i / 10 % 10)) == ((i / 10 % 10) - (i % 100 % 10))) count++;
+//		}
+//	}
+//	return count;
+//}
+//int main()
+//{
+//	int N;
+//	std::cin >> N;
+//	std::cout << HanNum(N) << '\n';
+//}
+
+//#include <iostream>
+//
+//int HanNum(int N)
+//{
+//	int count{};
+//
+//	if (N < 100) count = N;
+//	else
+//	{
+//		count = 99;
+//		for (int i = 100; i <= N; i++)
+//		{
+//			if (((i / 100) - (i / 10 % 10)) == ((i / 10 % 10) - (i % 100 % 10))) count++;
+//		}
+//	}
+//	return count;
+//}
+//int main()
+//{
+//	int N;
+//	std::cin >> N;
+//	std::cout << HanNum(N) << '\n';
+//}

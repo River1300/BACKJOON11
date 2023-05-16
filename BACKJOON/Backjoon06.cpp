@@ -409,3 +409,21 @@
 //
 //	std::cout << count << '\n';
 //}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	std::string name;
+//	std::cin >> name;
+//
+//	int num[26];
+//	std::fill_n(num, 26, -1);
+//
+//	for (int i = 0; i < name.size(); i++)
+//	{
+//		int key = name[i] - 'a';
+//		if (num[key] == -1) num[key] = i;
+//	}
+//	for (int i = 0; i < 26; i++) std::cout << num[i] << ' ';
+//}
