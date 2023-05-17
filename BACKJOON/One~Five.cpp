@@ -610,3 +610,256 @@
 //		array[4][4] += sum;
 //	}
 //}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	char string[10]{};
+//	std::cin >> string;
+//
+//	for (int i = 9; i >= 0; i--) std::cout << string[i];
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	char string[100];
+//	int num = 0;
+//	int temp;
+//
+//	std::cin >> string;
+//	while (string[num] != 0) num++;
+//	for (int i = 0; i < num / 2; i++)
+//	{
+//		temp = string[i];
+//		string[i] = string[num - i - 1];
+//		string[num - i - 1] = temp;
+//	}
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	char string[100]{};
+//	int num = 0;
+//	std::cin >> string;
+//	while (string[num] != 0) num++;
+//	std::cout << num;
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	char string[10]{};
+//	int num{};
+//
+//	std::cin >> string;
+//	for (int i = 0; i < 10; i++)
+//	{
+//		if (string[i] != 0)
+//		{
+//			num = string[i] - 32;
+//			string[i] = num;
+//			std::cout << string[i] << ' ';
+//		}
+//	}
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	char string1[10]{};
+//	char string2[10]{};
+//	char string3[20]{};
+//	int index;
+//
+//	std::cin >> string1 >> string2;
+//	for (int i = 0; i < 10; i++)
+//	{
+//		string3[i] = string1[i];
+//		if (string1[i] == 0) {
+//			index = i;
+//			break;
+//		}
+//	}
+//	for (int i = 0; i < 10; i++, index++)
+//	{
+//		string3[index] = string2[i];
+//		if (string2[i] == 0) break;
+//	}
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	int block[3][3]{
+//		{0,1,0},
+//		{0,1,1},
+//		{0,1,0}
+//	};
+//	int num{};
+//	int temp;
+//
+//	while (1)
+//	{
+//		std::cin >> num;
+//		switch (num)
+//		{
+//		case 0:
+//			for (int start = 0, end = 2; start < end; start++, end--)
+//			{
+//				for (int i = start, j = end; i < end; i++, j--)
+//				{
+//					temp = block[start][i];
+//					block[start][i] = block[i][end];
+//					block[i][end] = block[end][j];
+//					block[end][j] = block[j][start];
+//					block[j][start] = temp;
+//				}
+//			}
+//		case 1:
+//			for (int start = 0, end = 2; start < end; start++, end--)
+//			{
+//				for (int i = start, j = end; i < end; i++, j--)
+//				{
+//					temp = block[start][j];
+//					block[start][j] = block[i][start];
+//					block[i][start] = block[end][i];
+//					block[end][i] = block[j][end];
+//					block[j][end] = temp;
+//				}
+//			}
+//		}
+//	}
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	for (int i = 0; i < 5; i++)
+//	{
+//		for (int j = 4; j > i; j--) std::cout << ' ';
+//		for (int j = 0; j <= i; j++) std::cout << "M ";
+//		std::cout << '\n';
+//	}
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	const int COLUMN{ 5 };
+//	int triangle[COLUMN][COLUMN]{};
+//
+//	for (int i = 0; i < COLUMN; i++)
+//	{
+//		if (i == 0) triangle[0][0] = 1;
+//		else
+//		{
+//			int prevValue;
+//			for (int j = 0; j <= i; j++)
+//			{
+//				prevValue = (j - 1 < 0) ? 0 : triangle[i - 1][j - 1];
+//				triangle[i][j] = prevValue + triangle[i - 1][j];
+//			}
+//		}
+//	}
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	const int COLUMN{ 5 };
+//	int snails[COLUMN][COLUMN]{};
+//
+//	enum Direction { Right, Down, Left, Up };
+//
+//	Direction dir{ Right };
+//
+//	int value{ 1 };
+//	int x{}, y{};
+//	while (value <= COLUMN * COLUMN)
+//	{
+//		snails[y][x] = value;
+//		value++;
+//		switch (dir)
+//		{
+//		case Right:
+//			x++;
+//			if (x == COLUMN || snails[y][x] != 0)
+//			{
+//				x--;
+//				y++;
+//				dir = Down;
+//			}
+//			break;
+//		case Down:
+//			y++;
+//			if (y == COLUMN || snails[y][x] != 0)
+//			{
+//				y--;
+//				x--;
+//				dir = Left;
+//			}
+//			break;
+//		case Left:
+//			x--;
+//			if (x < 0 || snails[y][x] != 0)
+//			{
+//				x++;
+//				y--;
+//				dir = Up;
+//			}
+//			break;
+//		case Up:
+//			y--;
+//			if (y < 0 || snails[y][x] != 0)
+//			{
+//				y++;
+//				x++;
+//				dir = Right;
+//			}
+//			break;
+//		}
+//	}
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	const int COLUMN{ 5 };
+//	int square[COLUMN][COLUMN]{};
+//	int value{ 1 };
+//
+//	int x{ COLUMN / 2 }, prevX{};
+//	int y{ 0 }, prevY{};
+//
+//	square[y][x] = value;
+//
+//	while (value <= COLUMN * COLUMN)
+//	{
+//		prevX = x;
+//		prevY = y;
+//		value++;
+//
+//		y--;
+//		x++;
+//
+//		if (y < 0) y = COLUMN - 1;
+//		if (x >= COLUMN) x = 0;
+//		if (square[y][x] != 0) {
+//			x = prevX;
+//			y = prevY + 1;
+//		}
+//		square[y][x] = value;
+//	}
+//}

@@ -427,3 +427,147 @@
 //	}
 //	for (int i = 0; i < 26; i++) std::cout << num[i] << ' ';
 //}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	std::string name;
+//	std::cin >> name;
+//
+//	int num[26];
+//	std::fill_n(num, 26, -1);
+//
+//	for (int i = 0; i < name.size(); i++)
+//	{
+//		int key = name[i] - 'a';
+//		if (num[key] == -1) num[key] = i;
+//	}
+//	for (int i = 0; i < 26; i++) std::cout << num[i] << ' ';
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	std::string name;
+//	std::cin >> name;
+//
+//	int count[26]{};
+//
+//	for (int i = 0; i < name.size(); i++)
+//	{
+//		int key;
+//
+//		if ('a' <= name[i] && name[i] <= 'z')
+//		{
+//			key = name[i] - 'a';
+//			count[key]++;
+//		}
+//		else if ('A' <= name[i] && name[i] <= 'Z')
+//		{
+//			key = name[i] - 'A';
+//			count[key]++;
+//		}
+//	}
+//
+//	int max{};
+//	int equal{};
+//	int index;
+//
+//	for (int i = 0; i < 26; i++)
+//	{
+//		if (max < count[i])
+//		{
+//			max = count[i];
+//			index = i;
+//		}
+//		else if (max == count[i])
+//		{
+//			equal = max;
+//		}
+//	}
+//
+//	if (max == equal) std::cout << '?';
+//	else std::cout << static_cast<char>(index + 'A');
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	std::string name;
+//	std::cin >> name;
+//
+//	int count[26]{};
+//
+//	for (int i = 0; i < name.size(); i++)
+//	{
+//		int key;
+//
+//		if ('a' <= name[i] && name[i] <= 'z')
+//		{
+//			key = name[i] - 'a';
+//			count[key]++;
+//		}
+//		else if ('A' <= name[i] && name[i] <= 'Z')
+//		{
+//			key = name[i] - 'A';
+//			count[key]++;
+//		}
+//	}
+//
+//	int max{};
+//	int equal{};
+//	int index;
+//
+//	for (int i = 0; i < 26; i++)
+//	{
+//		if (max < count[i]) {
+//			max = count[i];
+//			index = i;
+//		}
+//		else if (max == count[i]) {
+//			equal = max;
+//		}
+//	}
+//
+//	if (max == equal) std::cout << '?';
+//	else std::cout << static_cast<char>(index + 'A');
+//}
+
+//#include <iostream>
+//#include <string>
+//
+//int main()
+//{
+//	std::string name;
+//	std::getline(std::cin, name);
+//
+//	int count{};
+//
+//	for (int i = 0; i < name.size() + 1; i++)
+//	{
+//		if (i == 0) {}
+//		else if (name[i - 1] >= 'A' && name[i - 1] <= 'z' && name[i] == ' ') count++;
+//		else if (name[i - 1] >= 'A' && name[i - 1] <= 'z' && name[i] == '\0') count++;
+//	}
+//	std::cout << count << '\n';
+//}
+
+//#include <iostream>
+//#include <string>
+//
+//int main()
+//{
+//	std::string name;
+//	std::getline(std::cin, name);
+//
+//	int count{};
+//
+//	for (int i = 0; i < name.size(); i++)
+//	{
+//		if (32 < name[i] && name[i + 1] <= 32) count++;
+//	}
+//	std::cout << count << '\n';
+//}
