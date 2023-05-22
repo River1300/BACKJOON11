@@ -863,3 +863,311 @@
 //		square[y][x] = value;
 //	}
 //}
+
+/* ----- < 함수 > ----- */
+//
+//
+//
+//
+//
+/* --- < 함수( Function ) > --- */
+
+/*
+< 함수 > : 여러개의 명령어로된 집합으로 이러한 집합에 이름을 붙인 것
+
+< 매개 변수 > : 함수가 수행할 명령에 필요한 것들
+	#. < Callee > : 매개 변수, 함수 정의에 열거된 이름
+	#. < Caller > : 인자, 함수 호출에 넘겨줄 값
+
+< 매개 변수 기본값( Default ) > : 함수가 매개 변수로 인자를 받지 못하였을 경우 기본값을 자동 대입
+	#. 매개 변수에 ( = 0 )을 기입하면 실행된다.
+		=> < void Func(int a = 0); > : 기본값 설정은 함수 선언에만 있어도 작동한다.
+	#. 기본값을 제공하는 매개 변수는 맨 뒤의 매개 변수부터 작성해야 한다.
+		=> < void func(int a, int b = 1, int c = 0); >
+
+< 가변 인자 > : 매개 변수로 어떤 인자든 올 수 있게 하는 기능
+	#. < ... > : 말줄임표를 통해 사용할 수 있다.
+		=> void Func(int num, ...);
+		=> 첫 번째 매개 변수는 고정 매개 변수를 작성한 뒤 가변인자를 작성
+
+< 재귀 호출 > : 내가 나를 부르는 함수
+	#. < Base Case > : 더 이상 자를 수 없는 가장 작은 문제가 있어야 한다.
+	#. < Recursive Case > : 문제를 작은 집합으로 나눌 수 있어야 한다.
+*/
+
+//#include <iostream>
+//#include <stdarg.h>
+//
+//struct Song
+//{
+//	std::string name;
+//	int trackNum;
+//	int price;
+//};
+//
+//Song Input(std::string name, int trackNum, int price)
+//{
+//	Song cd;
+//
+//	cd.name = name;
+//	cd.trackNum = trackNum;
+//	cd.price = price;
+//
+//	return cd;
+//}
+//
+//int Sum(int a = 2, int b = 1)
+//{
+//	return a + b;
+//}
+//
+//int Sum(int input[5])
+//{
+//	int sum{};
+//	for (int i = 0; i < 5; i++) { sum += input[i]; }
+//	return sum;
+//}
+//
+//void function(int count, ...)
+//{
+//	va_list params;
+//
+//	va_start(params, count);
+//
+//	for (int i = 0; i < count; i++)
+//	{
+//		std::cout << va_arg(params, int);
+//	}	std::cout << std::endl;
+//}
+//
+//int main()
+//{
+//	Song Twice;
+//
+//	std::string name;
+//	int trackNum;
+//	int price;
+//
+//	std::cin >> name >> trackNum >> price;
+//
+//	Twice = Input(name, trackNum, price);
+//
+//	std::cout << Sum();
+//}
+
+/* < 매개 변수 일치 > */
+
+/*
+< 함수 구분 > : 함수는 변수와 다르게 이름이 같아도 컴파일러가 구분할 수 있다.
+	#. 함수의 구분은 이름뿐만 아니라 매개 변수의 종류와 갯수도 포함된다.
+
+< 함수 다형성 > : 똑같은 이름의 함수를 여러개 선언 및 정의할 수 있다.
+	#. < 함수 오버로딩 > : 같은 이름의 함수를 여러개 쌓을( STACK ) 수 있다.
+		#. 매개 변수와는 다르게 반환 값이 다를 경우는 오버로딩이 적용되지 않는다.
+
+< Call Stack > : 함수가 호출될 때 RAM공간에 차곡차곡 쌓여지는 형태를 말한다.
+	#. 함수가 반환될 때는 쌓여진 마지막 함수부터 차례로 반환된다.
+
+< Stack > : 함수와 변수가 저장되는 RAM의 공간
+	#. RAM안에 할당된 STACK공간이 가득차서 넘칠 경우 Stack Overflow에러가 발생한다.
+*/
+
+/* --- < 재귀함수( Recursive Function ) > --- */
+
+/*
+< 재귀함수 > : 함수의 내부에서 자기 자신을 다시 호출하는 함수를 말한다.
+	#. < 분할 정복( Divide & Conquar ) > : 큰 문제를 잘라서 작은 문제로 만든다.
+		#. 간단해진 문제를 재귀적( Recursive )으로 해결한다.
+			=> 동일한 문제의 작은 집합을 가진 문제
+*/
+
+//#include <iostream>
+//
+//void ForLoop1(int n)
+//{
+//	if (n < 0)
+//	{
+//		std::cout << '\n';
+//		return;
+//	}
+//	std::cout << n << ',';
+//	ForLoop1(n - 1);
+//}
+//void ForLoop2(int n)
+//{
+//	if (n < 0)
+//	{
+//		std::cout << '\n';
+//		return;
+//	}
+//	ForLoop2(n - 1);
+//	std::cout << n << ',';
+//}
+//
+//int Factor(int N)
+//{
+//	if (N == 1) { return 1; }
+//
+//	return N * Factor(N - 1);
+//}
+//
+//int Fibo(int N)
+//{
+//	if (N <= 2) { return 1; }
+//	return Fibo(N - 2) + Fibo(N - 1);
+//}
+//
+//void Move(char go, char end)
+//{
+//	std::cout << go << "를 " << end << "로 이동\n";
+//}
+//
+//void Hanoi(char A, char B, char C, int N)
+//{
+//	if (N == 1) { Move(A, C); }
+//	else {
+//		Hanoi(A, C, B, N - 1);
+//		Move(A, C);
+//		Hanoi(B, A, C, N - 1);
+//	}
+//}
+
+//#include <iostream>
+//
+//enum MonsterType
+//{
+//	wolf, demon, slime
+//};
+//struct Monster
+//{
+//	MonsterType type;
+//	std::string name;
+//	int HP;
+//};
+//std::string GetMonsterTypeString(MonsterType type)
+//{
+//	std::string typeString{};
+//
+//	switch (type)
+//	{
+//	case wolf:
+//		typeString = "WOLF";
+//		break;
+//	case demon:
+//		typeString = "DEMON";
+//		break;
+//	case slime:
+//		typeString = "SLIME";
+//		break;
+//	}
+//	return typeString;
+//}
+//void PrintMonster(Monster monster)
+//{
+//	std::cout << GetMonsterTypeString(monster.type) << '\n';
+//	std::cout << monster.name << '\n';
+//	std::cout << monster.HP << '\n';
+//}
+
+//#include <iostream>
+//#include <ctime>
+//
+//void CreateAnswer();
+//void InputNumber();
+//bool CheckNumber();
+//
+//int gResultArray[3]{};
+//int gInputArray[3]{};
+//
+//int main()
+//{
+//	CreateAnswer();
+//	while (true)
+//	{
+//		InputNumber();
+//		if (CheckNumber()) break;
+//	}
+//	return;
+//}
+//
+//void CreateAnswer()
+//{
+//	int usedDigit[10]{};
+//	std::srand(std::time(nullptr));
+//
+//	for (int i = 0; i < 3; i++)
+//	{
+//		bool isDuplicated = true;
+//		int random_didgit{};
+//
+//		while (isDuplicated)
+//		{
+//			random_didgit = std::rand() % 10;
+//			if (usedDigit[random_didgit] == 0)
+//			{
+//				usedDigit[random_didgit] = 1;
+//				break;
+//			}
+//		}
+//		gResultArray[i] = random_didgit;
+//		std::cout << random_didgit;
+//	}
+//}
+//void InputNumber()
+//{
+//	char input[4]{};
+//	std::cin >> input;
+//	for (int i = 0; i < 3; i++)
+//	{
+//		gInputArray[i] = input[i] - '0';
+//	}
+//}
+//bool CheckNumber()
+//{
+//	int ball{}, strike{};
+//	for (int i = 0; i < 3; i++)
+//	{
+//		for (int j = 0; j < 3; j++)
+//		{
+//			if (gInputArray[i] == gResultArray[j])
+//			{
+//				if (i == j) strike++;
+//				else ball++;
+//			}
+//		}
+//	}
+//	std::cout << strike << " 스트라이크!, " << ball << " 볼! \n";
+//	if (strike == 3)
+//	{
+//		return true;
+//	}
+//	return false;
+//}
+//}
+
+//#include <iostream>
+//
+//int Factor(int n)
+//{
+//	if (n == 0) return 1;
+//	return n * Factor(n - 1);
+//}
+//
+//#include <iostream>
+//
+//void Pibo(int a, int b, int c)
+//{
+//	if (c == 0) return;
+//	std::cout << a << ' ' << b << ' ';
+//	a += b;
+//	b += a;
+//
+//	Pibo(a, b, --c);
+//}
+//
+//int Fibo(int n)
+//{
+//	if (n == 1) return 0;
+//	else if (n == 2) return 1;
+//	else return Fibo(n - 1) + Fibo(n - 2);
+//}

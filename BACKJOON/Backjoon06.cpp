@@ -571,3 +571,44 @@
 //	}
 //	std::cout << count << '\n';
 //}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	std::string num1, num2;
+//	std::cin >> num1 >> num2;
+//
+//	int a, b;
+//	a = (num1[0] - '0') + (num1[1] - '0') * 10 + (num1[2] - '0') * 100;
+//	b = (num2[0] - '0') + (num2[1] - '0') * 10 + (num2[2] - '0') * 100;
+//
+//	if (a > b) std::cout << a << '\n';
+//	else std::cout << b << '\n';
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	std::string num1, num2;
+//	std::cin >> num1 >> num2;
+//
+//	int a, b;
+//	a = (num1[0] - '0') + (num1[1] - '0') * 10 + (num1[2] - '0') * 100;
+//}
+
+//#include <iostream>
+//
+//int main()
+//{
+//	std::string fx;
+//	std::cin >> fx;
+//
+//	int count{};
+//	for (int i = 0; i < fx.size(); i++)
+//	{
+//		for (char C : "ADGJMPTW") count += (fx[i] >= C);
+//		count++;
+//	}
+//}
